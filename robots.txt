@@ -1,0 +1,3 @@
+# Borrador interno. No debe aparecer en buscadores.
+User-agent: *
+Disallow: /

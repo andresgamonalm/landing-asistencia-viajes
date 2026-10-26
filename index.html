@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seguro de Asistencia en Viajes: cotiza y contrata online | Zurich Chile</title>
+<meta name="description" content="Cotiza tu asistencia en viajes online en un minuto. Tres planes con asistencia médica desde USD 40.000, cobertura Covid-19, equipaje y seguro de accidentes personales. Paga en hasta 12 cuotas sin interés.">
+<!-- ¡OJO! Mientras esto sea un borrador en una dirección de pruebas va en "noindex":
+     si Google indexa una página con la marca Zurich y una campaña de ejemplo, el
+     problema es de la compañía. AL PUBLICAR EN zurich.cl, cambiar a "index,follow". -->
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://www.zurich.cl/bienes-y-viaje/asistencia-en-viajes">
+<meta property="og:title" content="Seguro de Asistencia en Viajes: cotiza y contrata online | Zurich Chile">
+<meta property="og:description" content="Cotiza tu asistencia en viajes online en un minuto. Tres planes con asistencia médica desde USD 40.000, cobertura Covid-19, equipaje y seguro de accidentes personales.">
+<meta property="og:image" content="https://edge.sitecorecloud.io/zurichinsurf8c0-zwpshared-prod-d824/media/project/zurich-headless/chile/images/foto-blog-viaje-solo-800x450.jpg?w=900">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2167AE">
+<!--
+=====================================================================
+  LANDING SEGURO DE ASISTENCIA EN VIAJES · ZURICH CHILE
+  Versión: con cotizador embebido (Universal Assistance)
+  Gerencia de Ecommerce · octubre 2026
+
+  Archivo autónomo: todo el CSS y los íconos están dentro. Recursos externos:
+    - Fuente Inter (Google Fonts). Si el servidor sirve Zurich Sans y Ogg, se usan primero.
+    - Logotipo: embebido en el archivo (PNG oficial).
+    - Fotografía del hero: incrustada en el archivo (JPEG). Para servirla desde el CDN,
+      reemplaza el src de [02.2] por la dirección que está comentada ahí mismo.
+    - Cotizador: el buscador es de esta página; al enviarlo, los datos van por POST
+      al motor de Universal Assistance (ver bloques [03] y [17]).
+
+  ÍNDICE DE BLOQUES (búscalos por su número entre corchetes)
+    [01] Cabecera
+    [02] Hero · [02.1] campaña · [02.2] fotografía · [02.3] formas de marca
+    [03] Cotizador  ← buscador propio de Zurich; envía al motor de Universal Assistance
+    [04] Por qué elegirlo
+    [05] Planes y promociones
+    [06] Cómo contratas
+    [07] Dudas antes de comprar
+    [08] Mundo Zurich
+    [09] Cierre
+    [10] Legales
+    [11] Pie
+    [12] Barra fija en móvil
+    [13] Fichas de detalle de cada plan (ventanas)
+    [14] Medición (dataLayer)
+    [15] Traspaso de parámetros de campaña
+    [16] Barra fija: comportamiento
+    [17] Cotizador: ampliar al interactuar
+    [18] Fichas de detalle: abrir y cerrar
+    [00] Huincha superior · [00.1] Popup · [19] Modo edición (?editar)
+
+  ANTES DE PUBLICAR EN zurich.cl
+    1. Cambiar <meta name="robots"> de "noindex,nofollow" a "index,follow".
+    2. Completar los códigos POL / CAD en el bloque [10] LEGALES.
+    3. Revisar o borrar la campaña de ejemplo (etiqueta, textos y bases, marcados
+       con data-campana) y los precios referenciales de las tarjetas de plan.
+
+  PUNTOS DE INTEGRACIÓN PARA IT
+    A. Contenedor de Google Tag Manager: pegar en el bloque marcado [GTM] dentro de <head>.
+    B. Dirección del motor: en el action del formulario de [03]. Los enlaces con
+       data-cotizador apuntan al sitio público de Universal Assistance, de respaldo.
+    C. Cotizador: el contrato con el motor de Universal Assistance (dirección, nombres
+       de campo y formatos) está documentado en el bloque [17]. Si dejara de cotizar,
+       ahí es donde se revisa.
+=====================================================================
+-->
+<!-- Fuente Inter: autorizada por el brandbook cuando Zurich Sans no está disponible -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<!-- El motor de cotización vive en otro dominio: adelantamos la conexión -->
+<link rel="preconnect" href="https://cl.ec.universal-assistance.com">
+<!-- [GTM] Pegar aquí el fragmento de Google Tag Manager de la compañía (parte <head>) -->
+<style>
+/* ==========================================================================
+   1. VARIABLES — colores oficiales del Brandbook Zurich 2024 y escala de letra
+   ========================================================================== */
+:root{
+  /* Colores de marca (paleta principal) */
+  --azul-zurich:#2167AE;      /* color héroe: botones, enlaces, acentos */
+  --azul-oscuro:#23366F;      /* titulares y texto del cuerpo */
+  --azul-medio:#5495CF;       /* solo formas decorativas */
+  --azul-claro:#91BFE3;       /* fondos de círculo y formas */
+  --celeste:#1FB1E6;          /* formas decorativas */
+  --piedra:#DAD2BD;           /* formas decorativas */
+  --paloma:#DDE4E3;           /* fondos de superficie */
+  --blanco-zurich:#ECEEEF;    /* fondo de secciones alternas (solo pantalla) */
+  --blanco:#FFFFFF;
+  /* Color inclusivo de campaña */
+  --campana:#FFF773;          /* Lima: etiqueta de promoción, texto en azul oscuro */
+  /* Color de los legales (distinto del texto corriente, por regla de la pieza) */
+  --gris-legal:#5E6A78;
+  --gris-linea:#D9DEE3;       /* filetes y bordes de campos */
+
+  /* Escala de tamaños de letra. Todos los textos toman uno de estos valores. */
+  --letra-12:12px;   /* legales y notas */
+  --letra-14:14px;   /* etiquetas, enlaces secundarios */
+  --letra-16:16px;   /* texto corriente */
+  --letra-18:18px;   /* texto destacado, subtítulos de tarjeta */
+  --letra-20:20px;   /* títulos de tarjeta */
+  --letra-24:24px;   /* títulos de sección en móvil */
+  --letra-32:32px;   /* títulos de sección en escritorio / titular hero en móvil */
+  --letra-44:44px;   /* titular del hero en escritorio */
+
+  /* Interlineados (número sin unidad = múltiplo del tamaño de letra) */
+  --interlineado-texto:1.5;     /* párrafos */
+  --interlineado-titulo:1.15;   /* titulares */
+
+  /* Medidas de armazón */
+  --ancho-maximo:1200px;        /* ancho útil de la página en escritorio */
+  --radio-tarjeta:16px;         /* esquinas de tarjetas, igual que el portal */
+  --radio-boton:999px;          /* botón en forma de píldora, igual que el portal */
+  --alto-cabecera:72px;
+}
+
+.hero__pictograma{position:absolute;left:50%;top:50%;width:48%;height:48%;transform:translate(-50%,-50%)} /* respaldo si no carga la foto */
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Zurich Sans",Inter,Arial,Helvetica,sans-serif; /* Zurich Sans si el servidor la sirve; si no, Inter (autorizada por el brandbook) */
+  font-size:var(--letra-16);
+  line-height:var(--interlineado-texto);
+  color:var(--azul-oscuro);
+  background:var(--blanco);
+}
+img{max-width:100%;display:block}
+a{color:var(--azul-zurich)}
+h1,h2,h3{line-height:var(--interlineado-titulo);font-weight:700}
+.contenedor{width:100%;max-width:var(--ancho-maximo);margin:0 auto;padding:0 24px}
+.visualmente-oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Palabra destacada del titular: Ogg en el portal; aquí Ogg si el servidor la sirve, si no una serif itálica */
+.destacado{font-family:Ogg,Lora,Georgia,"Times New Roman",serif;font-style:italic;font-weight:400}
+
+/* ==========================================================================
+   3. BOTONES — píldora azul con texto blanco, como "Cotiza y contrata" del portal
+   ========================================================================== */
+.boton{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:12px 28px;border-radius:var(--radio-boton);
+  background:var(--azul-zurich);color:var(--blanco);
+  font-weight:700;font-size:var(--letra-16);text-decoration:none;border:2px solid var(--azul-zurich);
+  cursor:pointer;white-space:nowrap;
+  transition:background .15s,color .15s,transform .15s;
+}
+.boton:hover{background:var(--azul-oscuro);border-color:var(--azul-oscuro)}
+.boton:active{transform:translateY(1px)}
+.boton:focus-visible{outline:3px solid var(--celeste);outline-offset:2px}
+.boton--blanco{background:var(--blanco);color:var(--azul-zurich);border-color:var(--blanco)}
+.boton--blanco:hover{background:var(--blanco-zurich);border-color:var(--blanco-zurich);color:var(--azul-oscuro)}
+.boton--linea{background:transparent;color:var(--azul-zurich)}
+.boton--linea:hover{background:var(--azul-zurich);color:var(--blanco)}
+.boton--ancho{width:100%}
+.boton svg{width:18px;height:18px;flex:none}
+
+/* ==========================================================================
+   4. CABECERA — fondo blanco, logotipo azul, igual que el portal público
+   ========================================================================== */
+.cabecera{
+  position:sticky;top:0;z-index:20;background:var(--blanco);
+  border-bottom:1px solid var(--gris-linea);
+}
+.cabecera__interior{height:var(--alto-cabecera);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.cabecera__logo{height:32px;width:auto} /* ancho proporcional 4,31:1 lo calcula el navegador */
+.cabecera__acciones{display:flex;align-items:center;gap:24px}
+.cabecera__telefono{display:none;color:var(--azul-oscuro);text-decoration:none;font-weight:600;font-size:var(--letra-14);align-items:center;gap:8px}
+.cabecera__telefono svg{width:18px;height:18px}
+@media(min-width:768px){.cabecera__telefono{display:inline-flex}}
+@media(max-width:767px){.cabecera__cta{min-height:40px;padding:8px 18px;font-size:var(--letra-14)}}
+
+/* ==========================================================================
+   5. HERO
+   ========================================================================== */
+.hero{position:relative;overflow:hidden;background:var(--blanco)}
+.hero__interior{
+  display:grid;gap:32px;align-items:center;
+  padding:40px 24px 0;position:relative;z-index:2; /* sin relleno inferior: las formas se apoyan en el borde de la sección */
+}
+@media(min-width:900px){
+  .hero__interior{grid-template-columns:1.05fr .95fr;gap:48px;padding:56px 24px 0}
+}
+.hero__categoria{font-size:var(--letra-14);font-weight:700;color:var(--azul-zurich);margin-bottom:12px;text-transform:uppercase}
+.hero__titulo{font-size:var(--letra-32);margin-bottom:16px}
+@media(min-width:900px){.hero__titulo{font-size:var(--letra-44)}}
+.hero__titulo .destacado{color:var(--azul-zurich)}
+.hero__texto{font-size:var(--letra-18);margin-bottom:12px;max-width:560px}
+.hero__nota{font-size:var(--letra-14);color:var(--gris-legal);margin-bottom:24px}
+.hero__acciones{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.hero__enlace{font-size:var(--letra-14);font-weight:600}
+
+/* Etiqueta de campaña (color inclusivo Lima, texto azul oscuro: contraste 10,28:1) */
+.etiqueta-campana{
+  display:inline-block;background:var(--campana);color:var(--azul-oscuro);
+  font-weight:700;font-size:var(--letra-14);padding:6px 14px;border-radius:var(--radio-boton);margin-bottom:16px;
+}
+
+/* Lado derecho del hero: círculo con fotografía arriba y formas de marca en la banda inferior. */
+.hero__visual{position:relative;min-height:360px}
+@media(min-width:900px){.hero__visual{min-height:500px}}
+.hero__circulo{
+  width:260px;aspect-ratio:1/1;border-radius:50%;overflow:hidden;
+  background:var(--azul-claro);margin:0 auto;position:relative;z-index:2;
+}
+@media(min-width:900px){.hero__circulo{width:380px;margin:0 0 0 24px}}
+@media(max-width:899px){.hero__visual{margin-top:8px}}
+/* object-position corrido a la derecha: en la foto oficial la persona no está al centro */
+.hero__circulo img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;object-position:62% 50%}
+
+/* Lenguaje de formas (Brandbook): al menos tres formas, escalas distintas, sin superponerse,
+   colores distintos entre vecinas y apoyadas en el borde inferior de la sección */
+.forma{position:absolute;z-index:1;display:block}
+.forma--semicirculo-izq{left:0;bottom:0;width:160px;height:80px;border-radius:160px 160px 0 0;background:var(--celeste)}
+.forma--circulo-pequeno{left:196px;bottom:20px;width:44px;height:44px;border-radius:50%;background:var(--azul-medio)}
+.forma--cuarto-der{right:0;bottom:0;width:110px;height:110px;border-radius:110px 0 0 0;background:var(--piedra)}
+@media(max-width:899px){
+  .forma--semicirculo-izq{width:110px;height:55px}
+  .forma--circulo-pequeno{left:140px;width:30px;height:30px;bottom:14px}
+  .forma--cuarto-der{width:72px;height:72px;border-radius:72px 0 0 0}
+}
+
+/* ==========================================================================
+   6. SECCIONES GENERALES
+   ========================================================================== */
+.seccion{padding:56px 0}
+@media(min-width:900px){.seccion{padding:72px 0}}
+/* Los enlaces internos dejan sitio a la cabecera fija: si no, el título queda tapado */
+#cotizar,#planes{scroll-margin-top:calc(var(--alto-cabecera) + 12px)}
+.seccion--gris{background:var(--blanco-zurich)}
+.seccion__titulo{font-size:var(--letra-24);text-align:center;margin-bottom:12px}
+@media(min-width:900px){.seccion__titulo{font-size:var(--letra-32)}}
+.seccion__bajada{text-align:center;max-width:720px;margin:0 auto 36px;font-size:var(--letra-18)}
+
+/* 6.1 Beneficios: tres columnas con ícono de línea azul */
+.beneficios{display:grid;gap:24px}
+@media(min-width:768px){.beneficios{grid-template-columns:repeat(3,1fr)}}
+.beneficio{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 12px}
+.beneficio svg{width:56px;height:56px;color:var(--azul-zurich);margin-bottom:16px}
+.beneficio h3{font-size:var(--letra-20);margin-bottom:8px}
+.beneficio p{max-width:300px}
+
+/* 6.2 Planes: tres tarjetas blancas, esquinas redondeadas y sombra suave, como el portal */
+.planes{display:grid;gap:20px;align-items:stretch}
+@media(min-width:900px){.planes{grid-template-columns:repeat(3,1fr);gap:24px}}
+.plan{
+  background:var(--blanco);border-radius:var(--radio-tarjeta);padding:28px 24px;
+  display:flex;flex-direction:column;box-shadow:0 8px 24px rgba(35,54,111,.08);
+  border:2px solid transparent;
+}
+.plan--completo{border-color:var(--azul-zurich)}
+.plan__nombre{font-size:var(--letra-14);font-weight:700;text-transform:uppercase;color:var(--azul-zurich);margin-bottom:4px}
+.plan__titulo{font-size:var(--letra-24);margin-bottom:12px}
+.plan__rc{font-size:var(--letra-16);margin-bottom:16px}
+.plan__rc strong{font-size:var(--letra-20)}
+.plan__lista{list-style:none;margin:0 0 20px;padding:16px 0 0;border-top:1px solid var(--gris-linea);flex:1}
+.plan__lista li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:var(--letra-16)}
+.plan__lista svg{width:20px;height:20px;flex:none;color:var(--azul-zurich);margin-top:2px}
+.plan__lista li.no{color:var(--gris-legal)}
+.plan__lista li.no svg{color:var(--gris-linea)}
+.plan__etiqueta{display:inline-block;align-self:flex-start;background:var(--azul-zurich);color:var(--blanco);font-size:var(--letra-12);font-weight:700;padding:4px 12px;border-radius:var(--radio-boton);margin-bottom:12px}
+/* Las tarjetas sin etiqueta reservan su altura: así las tres quedan alineadas */
+.plan:not(.plan--completo)::before{content:"";display:block;height:26px;margin-bottom:12px}
+.planes__pie{text-align:center;margin-top:24px;font-size:var(--letra-14)}
+
+/* 6.2.1 Promoción dentro de la tarjeta · "7 días por Sudamérica desde $X por persona"
+   Fondo Lima sobre azul oscuro, el mismo par de la etiqueta de campaña (contraste 10,28:1). */
+.plan__promo{
+  background:var(--campana);color:var(--azul-oscuro);border-radius:12px;
+  padding:12px 14px;margin-bottom:16px;font-size:var(--letra-14);line-height:1.35;
+}
+.plan__promo strong{display:block;font-size:var(--letra-24);line-height:1.1;margin:2px 0}
+.plan__promo span{display:block;font-size:var(--letra-12)}
+
+/* 6.2.2 Enlace "Ver detalle del plan" con ícono de ojo, como en el cotizador */
+.plan__detalle{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  background:none;border:0;padding:10px 0 16px;cursor:pointer;
+  color:var(--azul-zurich);font:inherit;font-size:var(--letra-14);font-weight:600;text-decoration:underline;
+}
+.plan__detalle svg{width:18px;height:18px}
+.plan__detalle:hover{color:var(--azul-oscuro)}
+.plan__detalle:focus-visible{outline:3px solid var(--celeste);outline-offset:2px;border-radius:8px}
+
+/* 6.3 Pasos: tres pasos en fila, número dentro de círculo azul */
+.pasos{display:grid;gap:24px;counter-reset:paso}
+@media(min-width:768px){.pasos{grid-template-columns:repeat(3,1fr)}}
+.paso{text-align:center;padding:0 12px}
+.paso__numero{
+  width:56px;height:56px;border-radius:50%;background:var(--azul-zurich);color:var(--blanco);
+  font-size:var(--letra-24);font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+}
+.paso h3{font-size:var(--letra-20);margin-bottom:8px}
+
+/* 6.4 Dudas de compra: tarjetas compactas con fondo blanco sobre sección gris */
+.dudas{display:grid;gap:16px}
+@media(min-width:900px){.dudas{grid-template-columns:repeat(3,1fr);gap:24px}}
+.duda{background:var(--blanco);border-radius:var(--radio-tarjeta);padding:24px;display:flex;flex-direction:column;justify-content:flex-start}
+.duda h3{font-size:var(--letra-18);margin-bottom:8px}
+
+/* 6.5 Mundo Zurich: franja con lista de mundos como etiquetas */
+.mundo{display:grid;gap:24px;align-items:center}
+@media(min-width:900px){.mundo{grid-template-columns:1fr 1fr;gap:48px}}
+.mundo h2{font-size:var(--letra-24);margin-bottom:12px}
+@media(min-width:900px){.mundo h2{font-size:var(--letra-32)}}
+.mundo__lista{display:flex;flex-wrap:wrap;gap:10px;list-style:none}
+.mundo__lista li{background:var(--blanco-zurich);border:1px solid var(--gris-linea);border-radius:var(--radio-boton);padding:8px 16px;font-size:var(--letra-14);font-weight:600}
+
+/* 6.6 Cierre: banda azul héroe con botón blanco y formas ancladas al borde inferior */
+.cierre{position:relative;overflow:hidden;background:var(--azul-zurich);color:var(--blanco)}
+.cierre__interior{position:relative;z-index:2;padding:56px 24px 72px;text-align:center}
+@media(min-width:900px){.cierre__interior{padding:72px 24px 96px}}
+.cierre h2{font-size:var(--letra-24);margin-bottom:12px}
+@media(min-width:900px){.cierre h2{font-size:var(--letra-32)}}
+.cierre p{font-size:var(--letra-18);max-width:640px;margin:0 auto 28px}
+.cierre p a{color:inherit}
+.cierre .boton--blanco{color:var(--azul-zurich)}
+.cierre .boton--blanco:hover{color:var(--azul-oscuro)}
+.cierre__acciones{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px}
+.forma--cierre-1{left:0;bottom:0;width:120px;height:60px;border-radius:120px 120px 0 0;background:var(--azul-claro)}
+.forma--cierre-2{right:40px;bottom:0;width:72px;height:72px;border-radius:72px 72px 0 0;background:var(--celeste)}
+.forma--cierre-3{right:0;bottom:0;width:28px;height:28px;border-radius:28px 0 0 0;background:var(--campana)}
+
+/* ==========================================================================
+   7. LEGALES Y PIE
+   ========================================================================== */
+.legales{padding:28px 0;font-size:var(--letra-12);color:var(--gris-legal);line-height:1.5}
+.legales p{margin-bottom:8px}
+.legales a{color:var(--gris-legal)}
+.pie{background:var(--azul-oscuro);color:var(--blanco);padding:24px 0;font-size:var(--letra-14)}
+.pie__interior{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+.pie a{color:var(--blanco);text-decoration:none}
+.pie a:hover{text-decoration:underline}
+.pie ul{display:flex;flex-wrap:wrap;gap:12px 24px;list-style:none}
+
+/* ==========================================================================
+   8. BARRA FIJA DE ACCIÓN EN MÓVIL (aparece al dejar atrás el hero)
+   ========================================================================== */
+.barra-movil{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--blanco);
+  border-top:1px solid var(--gris-linea);padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  transform:translateY(110%);transition:transform .25s;
+}
+.barra-movil.visible{transform:translateY(0)}
+@media(min-width:900px){.barra-movil{display:none}}
+
+/* ==========================================================================
+   9. (reservado)
+   ========================================================================== */
+
+/* ==========================================================================
+   10. COTIZADOR · buscador propio de Zurich
+
+   El buscador es de esta página: no hay nada incrustado del sitio de Universal
+   Assistance. Al enviarlo, los datos viajan por POST al motor de cotización y el
+   visitante llega directo a la página de planes con su viaje ya cargado.
+
+   El contrato con el motor (dirección, nombres de campo, formatos y valores de
+   destino) está documentado en el bloque [17].
+   ========================================================================== */
+.cotizador{position:relative;overflow:hidden;background:var(--azul-zurich);color:var(--blanco)}
+.cotizador__interior{position:relative;z-index:2;padding:48px 24px 56px}
+@media(min-width:900px){.cotizador__interior{padding:64px 24px 72px}}
+.cotizador h2{font-size:var(--letra-24);text-align:center;margin-bottom:10px}
+@media(min-width:900px){.cotizador h2{font-size:var(--letra-32)}}
+.cotizador__bajada{text-align:center;max-width:680px;margin:0 auto 28px;font-size:var(--letra-18)}
+
+/* 10.1 La tarjeta blanca del buscador. En escritorio, los tres campos van en fila
+   separados por filetes, como en el portal; en móvil se apilan. */
+.buscador{
+  background:var(--blanco);border-radius:var(--radio-tarjeta);color:var(--azul-oscuro);
+  box-shadow:0 12px 32px rgba(35,54,111,.18);padding:16px;
+  display:grid;gap:14px;
+}
+@media(min-width:900px){
+  .buscador{padding:18px 20px;grid-template-columns:1.1fr 1.7fr .9fr auto;gap:0;align-items:end}
+  .buscador__campo + .buscador__campo{border-left:1px solid var(--gris-linea);margin-left:20px;padding-left:20px}
+  .buscador__enviar{margin-left:20px}
+}
+.buscador__campo{display:flex;flex-direction:column;gap:6px;min-width:0}
+.buscador__campo > span{font-size:var(--letra-14);font-weight:700}
+.buscador select,
+.buscador input[type="date"],
+.buscador input[type="number"]{
+  font:inherit;font-size:var(--letra-16);color:var(--azul-oscuro);background:var(--blanco);
+  border:1px solid var(--gris-linea);border-radius:8px;height:48px;padding:0 10px;width:100%;
+}
+.buscador select:focus,.buscador input:focus{outline:none;border-color:var(--azul-zurich);box-shadow:0 0 0 3px var(--azul-claro)}
+.buscador__fechas{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
+/* min-width:0 deja que las casillas de fecha se achiquen: sin esto, en pantallas
+   angostas el navegador las mantiene a su ancho natural y se salen de la tarjeta */
+.buscador__fechas input{min-width:0}
+@media(max-width:420px){.buscador__fechas input{padding:0 6px;font-size:var(--letra-14)}}
+.buscador__fechas span{color:var(--gris-legal)}
+.buscador__enviar{min-height:48px;width:100%}
+@media(min-width:900px){.buscador__enviar{width:auto;padding:12px 32px}}
+
+/* 10.2 Edades: una fila por debajo, una casilla por pasajero */
+.buscador__edades{
+  grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;
+  border-top:1px solid var(--gris-linea);padding-top:14px;margin-top:2px;
+}
+@media(min-width:900px){.buscador__edades{margin-top:16px}}
+.buscador__edades-titulo{width:100%;font-size:var(--letra-14);font-weight:700;margin:0}
+.buscador__edad{display:flex;flex-direction:column;gap:4px;width:104px}
+.buscador__edad label{font-size:var(--letra-12);font-weight:600;color:var(--gris-legal)}
+.buscador__nota{
+  grid-column:1/-1;font-size:var(--letra-12);color:var(--gris-legal);margin:0;
+}
+.buscador__error{
+  grid-column:1/-1;display:none;font-size:var(--letra-14);font-weight:600;color:#B3261E;
+  background:#FDECEA;border-radius:8px;padding:10px 12px;margin:0;
+}
+.buscador__error.visible{display:block}
+.buscador__espera{
+  grid-column:1/-1;font-size:var(--letra-14);color:var(--azul-oscuro);margin:0;
+  background:var(--blanco-zurich);border-radius:8px;padding:10px 12px;
+}
+.buscador__espera[hidden]{display:none}
+.buscador__espera a{font-weight:700}
+
+/* 10.3 Pie del bloque: quién opera el servicio y salida al cotizador completo */
+.cotizador__pie{
+  display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;
+  margin-top:14px;font-size:var(--letra-12);color:var(--blanco);
+}
+.cotizador__pie a{color:var(--blanco);font-weight:600}
+.cotizador__sello{display:flex;align-items:center;gap:8px}
+.cotizador__sello svg{width:16px;height:16px;flex:none}
+.forma--cot-1{left:0;bottom:0;width:130px;height:65px;border-radius:130px 130px 0 0;background:var(--azul-claro)}
+.forma--cot-2{right:56px;bottom:0;width:64px;height:64px;border-radius:64px 64px 0 0;background:var(--celeste)}
+.forma--cot-3{right:0;bottom:0;width:30px;height:30px;border-radius:30px 0 0 0;background:var(--campana)}
+
+/* ==========================================================================
+   11. FICHA DE DETALLE DEL PLAN (ventana emergente)
+   Reproduce la tabla de coberturas del cotizador: filas alternadas, concepto a la
+   izquierda y monto a la derecha, agrupadas por tipo de asistencia.
+   ========================================================================== */
+/* La ficha es una columna: cabecera y pie quedan fijos y solo el cuerpo se desplaza,
+   así el precio y el botón de cotizar están siempre a la vista. */
+.detalle{
+  position:fixed;inset:0;z-index:60;display:none;
+  align-items:center;justify-content:center;padding:24px 16px;
+  background:rgba(35,54,111,.55);
+}
+.detalle.abierta{display:flex}
+.detalle__tarjeta{
+  background:var(--blanco);border-radius:var(--radio-tarjeta);width:100%;max-width:620px;
+  overflow:hidden;box-shadow:0 24px 48px rgba(35,54,111,.3);
+  display:flex;flex-direction:column;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);
+}
+.detalle__cabecera{
+  flex:none;background:var(--azul-zurich);color:var(--blanco);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;
+}
+.detalle__cabecera h2{font-size:var(--letra-18);margin:0}
+.detalle__cabecera h2 strong{font-weight:700}
+.detalle__cerrar{
+  border:0;background:transparent;color:var(--blanco);font-size:var(--letra-24);
+  line-height:1;cursor:pointer;padding:4px 8px;border-radius:8px;
+}
+.detalle__cerrar:focus-visible{outline:3px solid var(--campana);outline-offset:2px}
+.detalle__cuerpo{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:20px}
+.detalle__grupo{margin-bottom:24px}
+.detalle__grupo h3{
+  display:flex;align-items:center;gap:8px;
+  font-size:var(--letra-16);color:var(--azul-zurich);margin-bottom:10px;
+}
+.detalle__grupo h3 svg{width:20px;height:20px;flex:none}
+.detalle__fila{
+  display:flex;gap:16px;justify-content:space-between;align-items:baseline;
+  padding:8px 10px;font-size:var(--letra-14);
+}
+.detalle__fila:nth-child(odd){background:var(--blanco-zurich)}
+.detalle__fila span{flex:1}
+.detalle__fila strong{flex:none;text-align:right;max-width:40%;font-weight:700}
+.detalle__nota{font-size:var(--letra-12);color:var(--gris-legal);padding:4px 10px;line-height:1.4}
+.detalle__notas{border-top:1px solid var(--gris-linea);padding-top:12px;margin-top:4px}
+.detalle__notas p{font-size:var(--letra-12);color:var(--gris-legal);margin-bottom:4px}
+.detalle__acciones{
+  flex:none;background:var(--blanco);border-top:1px solid var(--gris-linea);
+  display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:16px 20px;
+}
+.detalle__precio{font-size:var(--letra-14)}
+.detalle__precio strong{display:block;font-size:var(--letra-20)}
+body.sin-scroll{overflow:hidden}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body class="version-cta">
+
+<!-- [00] HUINCHA SUPERIOR · aviso de emergencia (amarilla) o informativo (azul).
+     Se enciende, se apaga y se edita desde Configuración en el modo edición (?editar). -->
+<div class="huincha huincha--amarilla" role="status" hidden>
+  <span class="huincha__texto">Aviso: por mantención programada, el pago en línea estará disponible nuevamente a las 09:00 horas.</span>
+  <button class="huincha__cerrar" type="button" aria-label="Cerrar aviso">&times;</button>
+</div>
+<!-- fin [00] HUINCHA SUPERIOR -->
+<!-- [GTM] Pegar aquí el fragmento <noscript> de Google Tag Manager -->
+
+<!-- ============================================================
+     [01] CABECERA · fondo blanco y logotipo azul, como zurich.cl
+     Para cambiar el logotipo: reemplaza el src por tu archivo (por ejemplo img/zurich_logo_horizontal.png)
+     ============================================================ -->
+<header class="cabecera">
+  <div class="contenedor cabecera__interior">
+    <a href="https://www.zurich.cl/" aria-label="Ir a zurich.cl">
+      <!-- Logotipo oficial embebido (PNG). Alternativa: el SVG del portal
+           https://edge.sitecorecloud.io/zurichinsurf8c0-zwpshared-prod-d824/media/project/zurich-headless/shared/zurich-logo-blue.svg -->
+      <img class="cabecera__logo" src="data:image/png;base64,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" alt="Zurich" width="140" height="32">
+    </a>
+    <div class="cabecera__acciones">
+      <a class="cabecera__telefono" href="tel:+56225814449" data-telefono="(2) 2581 4449"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 3h3l1.5 4-2 1.3a10 10 0 0 0 4.7 4.7L13 11l4 1.5v3a1.5 1.5 0 0 1-1.6 1.5C8.6 16.6 3.4 11.4 3 4.6A1.5 1.5 0 0 1 4.5 3Z"/></svg><span data-telefono-texto>(2) 2581 4449</span></a>
+      <a class="boton cabecera__cta" href="#cotizar" data-ubicacion="cabecera">Cotiza tu viaje</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     [02] HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="contenedor hero__interior">
+
+    <div class="hero__texto-bloque">
+      <p class="hero__categoria">Seguros de viaje</p>
+      <h1 class="hero__titulo">Seguro de <span class="destacado">Asistencia en Viajes</span></h1>
+
+      <!-- [02.1] CAMPAÑA · bloque de promoción. Se enciende y apaga desde Configuración en el modo edición; también se puede borrar a mano.
+           Texto de EJEMPLO: la campaña, el descuento y sus fechas son ficticios y deben reemplazarse por la vigente. -->
+      <span class="etiqueta-campana" data-campana>Campaña Verano Protegido</span>
+      <p class="hero__texto" data-campana>Contrata online y paga en <strong>hasta 12 cuotas sin interés</strong> con Webpay, más <strong>15% de descuento</strong> en el plan que elijas.*</p>
+      <p class="hero__nota" data-campana>*Válido hasta el 31 de enero de 2027 para asistencias contratadas desde esta página.</p>
+      <!-- fin [02.1] CAMPAÑA -->
+
+      <div class="hero__acciones">
+        <a class="boton" href="#cotizar" data-ubicacion="hero">Cotiza tu viaje<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12"/><path d="m11 5 5 5-5 5"/></svg></a>
+        <a class="hero__enlace" href="#planes">Ver los planes</a>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      <!-- [02.2] FOTOGRAFÍA · círculo con foto del CDN de Zurich Chile.
+           Para usar otra foto, cambia el src. Si la imagen no carga, queda el círculo en azul claro con el pictograma.
+           Alternativa oficial del micrositio Viaja Protegido (familia en el avión):
+           https://web.zurich.cl/viaja-protegido/img/imgbann.png -->
+      <div class="hero__circulo">
+        <svg class="hero__pictograma" viewBox="0 0 160 160" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M80 18c-4 0-7 3-7 7v28L22 82v12l51-14v30l-14 10v10l21-6 21 6v-10l-14-10V80l51 14V82L87 53V25c0-4-3-7-7-7Z"/></svg>
+        <img src="data:image/jpeg;base64,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" alt="Persona en el aeropuerto con su equipaje, lista para viajar protegida" width="900" height="506" fetchpriority="high" decoding="async" onerror="this.remove()">
+      </div>
+      <!-- [02.3] FORMAS DE MARCA · tres formas, escalas distintas, apoyadas en el borde inferior -->
+      <span class="forma forma--semicirculo-izq" aria-hidden="true"></span>
+      <span class="forma forma--circulo-pequeno" aria-hidden="true"></span>
+      <span class="forma forma--cuarto-der" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [03] COTIZADOR · buscador propio de Zurich.
+     No hay nada incrustado del sitio de Universal Assistance: este formulario es de
+     esta página y envía los datos por POST al motor de cotización. El visitante llega
+     directo a la página de planes con su viaje ya cargado.
+     Los campos ocultos y el formato de los datos los define ese motor: ver [17].
+     ============================================================ -->
+<section class="cotizador" id="cotizar">
+  <div class="contenedor cotizador__interior">
+    <h2>Cotiza tu asistencia en viajes</h2>
+    <p class="cotizador__bajada">Dinos a dónde vas, cuándo viajas y cuántos van. Ves el precio de los tres planes al instante, sin registrarte.</p>
+
+    <!-- novalidate: los avisos los damos nosotros. Los del navegador salen pegados al
+         campo y, si el campo quedó fuera de la vista, el visitante cree que el botón
+         no hace nada. -->
+    <form class="buscador" id="buscador" method="post" novalidate
+          action="https://cl.ec.universal-assistance.com/Ventas/CotizarExt"
+          data-ubicacion="cotizador">
+
+      <label class="buscador__campo">
+        <span>¿A dónde viajas?</span>
+        <!-- El texto que ve el visitante va en la etiqueta; el valor es el que entiende
+             el motor de cotización. No cambies los valores sin verificarlos. -->
+        <select name="Destino" id="destino" required>
+          <option value="" disabled selected>Elige tu destino</option>
+          <option value="América del Sur (salvo Vzla)">Sudamérica</option>
+          <option value="Centro america/Caribe">Centroamérica y Caribe (excepto Cuba)</option>
+          <option value="America del norte">Norteamérica</option>
+          <option value="Europa">Europa</option>
+          <option value="Asia">Oceanía, Asia y África</option>
+          <option value="Internacional Mundo">Múltiples destinos</option>
+          <option value="Territorio Nacional">Dentro de Chile</option>
+        </select>
+      </label>
+
+      <div class="buscador__campo">
+        <span id="etiqueta-fechas">¿Cuándo viajas?</span>
+        <div class="buscador__fechas">
+          <input type="date" id="ida" required aria-label="Fecha de ida">
+          <span aria-hidden="true">→</span>
+          <input type="date" id="vuelta" required aria-label="Fecha de regreso">
+        </div>
+      </div>
+
+      <label class="buscador__campo">
+        <span>¿Cuántos viajan?</span>
+        <select name="CantidadPasajeros" id="pasajeros">
+          <option value="1">1 pasajero</option>
+          <option value="2">2 pasajeros</option>
+          <option value="3">3 pasajeros</option>
+          <option value="4">4 pasajeros</option>
+          <option value="5">5 pasajeros</option>
+          <option value="6">6 pasajeros</option>
+          <option value="7">7 pasajeros</option>
+          <option value="8">8 pasajeros</option>
+          <option value="9">9 pasajeros</option>
+          <option value="10">10 pasajeros</option>
+        </select>
+      </label>
+
+      <button class="boton buscador__enviar" type="submit">Cotizar<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="5.5"/><path d="m13.5 13.5 3.5 3.5"/></svg></button>
+
+      <!-- Las casillas de edad las arma [17] según la cantidad de pasajeros -->
+      <div class="buscador__edades" id="edades"></div>
+      <p class="buscador__error" id="buscador-error" role="alert"></p>
+      <!-- Aparece al enviar. El motor contesta con una pantalla de carga que se redirige
+           sola, así que pasan unos segundos antes de ver los planes. Si se quedara pegada,
+           el enlace de respaldo ya quedó a la vista. -->
+      <p class="buscador__espera" id="buscador-espera" role="status" hidden>
+        Buscando los planes para tu viaje. Puede tardar unos segundos.
+        ¿Se quedó pegado? <a data-cotizador href="https://www.universal-assistance.com/cl/zurich?utm_source=zurich_cl&amp;utm_medium=referral&amp;utm_campaign=zurich_cl_prod_digitales" target="_blank" rel="noopener" data-ubicacion="cotizador-respaldo">Cotiza aquí</a>.
+      </p>
+      <p class="buscador__nota">La edad define el precio y la cobertura. Los planes se contratan hasta los 70 años.</p>
+    </form>
+
+    <div class="cotizador__pie">
+      <span class="cotizador__sello"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8.5" width="13" height="8" rx="2"/><path d="M7 8.5V6a3 3 0 0 1 6 0v2.5"/></svg>Asistencias operadas por Universal Assistance, partner de Zurich.</span>
+      <a data-cotizador href="https://www.universal-assistance.com/cl/zurich?utm_source=zurich_cl&amp;utm_medium=referral&amp;utm_campaign=zurich_cl_prod_digitales" target="_blank" rel="noopener" data-ubicacion="cotizador-sitio-ua">Ver el cotizador completo</a>
+    </div>
+  </div>
+  <span class="forma forma--cot-1" aria-hidden="true"></span>
+  <span class="forma forma--cot-2" aria-hidden="true"></span>
+  <span class="forma forma--cot-3" aria-hidden="true"></span>
+</section>
+
+
+<!-- ============================================================
+     [04] POR QUÉ ELEGIRLO · tres argumentos
+     ============================================================ -->
+<section class="seccion">
+  <div class="contenedor">
+    <h2 class="seccion__titulo">¿Por qué viajar con asistencia?</h2>
+    <p class="seccion__bajada">Una urgencia médica fuera de Chile puede costar miles de dólares. Con tu asistencia contratada, la llamada la haces tú y la cuenta la pagamos nosotros.</p>
+    <div class="beneficios">
+      <div class="beneficio"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5 8 11v11c0 10 7 17 16 21 9-4 16-11 16-21V11L24 5Z"/><path d="M24 17v12M18 23h12"/></svg><h3>+ Tranquilidad</h3><p>Asistencia médica por enfermedad o accidente desde USD 40.000, también por Covid-19.</p></div>
+      <div class="beneficio"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="16" width="28" height="22" rx="3"/><path d="M18 16v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3"/><path d="M10 26h28"/><path d="M19 38v3M29 38v3"/></svg><h3>+ Respaldo</h3><p>Equipaje demorado o perdido, documentos extraviados y vuelos retrasados más de 6 horas.</p></div>
+      <div class="beneficio"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="5" width="20" height="38" rx="3"/><path d="M21 9h6"/><path d="M18 24l4 4 8-8"/><circle cx="24" cy="38" r="1.2" fill="currentColor"/></svg><h3>+ Comodidad</h3><p>Cotizas, pagas y recibes tu certificado online. Teleasistencia médica desde la app, 24/7.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [05] PLANES Y PROMOCIONES
+     Los montos son los publicados por el cotizador en octubre de 2026.
+     Los precios de las promociones son REFERENCIALES: ver el detalle en [10] LEGALES.
+     ============================================================ -->
+<section class="seccion seccion--gris" id="planes">
+  <div class="contenedor">
+    <h2 class="seccion__titulo">Elige el plan para tu viaje</h2>
+    <p class="seccion__bajada">Los tres planes incluyen asistencia médica, traslados, repatriación y seguro de accidentes personales de Zurich. Cambian los montos y los beneficios de equipaje.</p>
+    <div class="planes">
+
+      <article class="plan">
+        <p class="plan__nombre">Plan</p>
+        <h3 class="plan__titulo">Básico</h3>
+        <p class="plan__promo" data-campana>7 días por Sudamérica<strong>desde $27.630</strong><span>por persona · 2 pasajeros</span></p>
+        <p class="plan__rc">Asistencia médica <strong>USD 40.000</strong></p>
+        <ul class="plan__lista">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por Covid-19 USD 40.000</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Preexistencias hasta USD 400</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Accidentes personales UF 1.000 (póliza Zurich)</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Pérdida de equipaje USD 1.000</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Traslados y repatriación incluidos</span></li>
+          <li class="no"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="M6.5 10h7"/></svg><span>Cúmulo por evento con múltiples titulares</span></li>
+        </ul>
+        <button type="button" class="plan__detalle" data-detalle="basico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.8 10S4.9 4.5 10 4.5 18.2 10 18.2 10 15.1 15.5 10 15.5 1.8 10 1.8 10Z"/><circle cx="10" cy="10" r="2.6"/></svg>Ver detalle del plan</button>
+        <a class="boton boton--ancho" href="#cotizar" data-ubicacion="plan-basico">Cotizar plan Básico</a>
+      </article>
+
+      <article class="plan">
+        <p class="plan__nombre">Plan</p>
+        <h3 class="plan__titulo">Estándar</h3>
+        <p class="plan__promo" data-campana>7 días por Sudamérica<strong>desde $33.160</strong><span>por persona · 2 pasajeros</span></p>
+        <p class="plan__rc">Asistencia médica <strong>USD 80.000</strong></p>
+        <ul class="plan__lista">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por Covid-19 USD 80.000</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Preexistencias hasta USD 2.000</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Accidentes personales UF 1.000 (póliza Zurich)</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Equipaje USD 1.000 y demora USD 300</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Medicamentos ambulatorios USD 2.500</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Cúmulo por evento USD 400.000</span></li>
+        </ul>
+        <button type="button" class="plan__detalle" data-detalle="estandar"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.8 10S4.9 4.5 10 4.5 18.2 10 18.2 10 15.1 15.5 10 15.5 1.8 10 1.8 10Z"/><circle cx="10" cy="10" r="2.6"/></svg>Ver detalle del plan</button>
+        <a class="boton boton--ancho" href="#cotizar" data-ubicacion="plan-estandar">Cotizar plan Estándar</a>
+      </article>
+
+      <article class="plan plan--completo">
+        <span class="plan__etiqueta">Cobertura completa</span>
+        <p class="plan__nombre">Plan</p>
+        <h3 class="plan__titulo">Premium</h3>
+        <p class="plan__promo" data-campana>7 días por Sudamérica<strong>desde $49.124</strong><span>por persona · 2 pasajeros</span></p>
+        <p class="plan__rc">Asistencia médica <strong>USD 250.000</strong></p>
+        <ul class="plan__lista">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por Covid-19 USD 250.000</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Preexistencias hasta USD 3.000</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Accidentes personales UF 1.000 (póliza Zurich)</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Equipaje USD 2.000 y demora USD 400</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia nacional USD 62.500</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Cúmulo por evento USD 1.500.000</span></li>
+        </ul>
+        <button type="button" class="plan__detalle" data-detalle="premium"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.8 10S4.9 4.5 10 4.5 18.2 10 18.2 10 15.1 15.5 10 15.5 1.8 10 1.8 10Z"/><circle cx="10" cy="10" r="2.6"/></svg>Ver detalle del plan</button>
+        <a class="boton boton--ancho" href="#cotizar" data-ubicacion="plan-premium">Cotizar plan Premium</a>
+      </article>
+
+    </div>
+    <p class="planes__pie" data-campana>Precios referenciales por persona para 2 pasajeros de 35 y 42 años, 7 días con destino Sudamérica. Tu precio depende del destino, las fechas y las edades: <a href="#cotizar">cotiza tu viaje</a>.</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [06] CÓMO CONTRATAS · tres pasos
+     ============================================================ -->
+<section class="seccion">
+  <div class="contenedor">
+    <h2 class="seccion__titulo">Contrata en tres pasos</h2>
+    <div class="pasos">
+      <div class="paso"><div class="paso__numero">1</div><h3>Cotiza en un minuto</h3><p>Ingresas el destino, las fechas del viaje y la edad de quienes viajan.</p></div>
+      <div class="paso"><div class="paso__numero">2</div><h3>Compara los tres planes</h3><p>Ves el precio total de Básico, Estándar y Premium, y el detalle de cada cobertura.</p></div>
+      <div class="paso"><div class="paso__numero">3</div><h3>Paga y recibe tu certificado</h3><p>Pagas con Webpay en hasta 12 cuotas sin interés y te llega por correo al instante.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [07] DUDAS ANTES DE COMPRAR
+     ============================================================ -->
+<section class="seccion seccion--gris">
+  <div class="contenedor">
+    <h2 class="seccion__titulo">Lo que preguntan antes de contratar</h2>
+    <div class="dudas">
+      <div class="duda"><h3>¿Hasta qué edad puedo contratar?</h3><p>Hasta los 70 años en los tres planes. Sobre esa edad, llámanos y revisamos alternativas.</p></div>
+      <div class="duda"><h3>¿Cubre enfermedades preexistentes?</h3><p>Sí, con tope: USD 400 en el Básico, USD 2.000 en el Estándar y USD 3.000 en el Premium.</p></div>
+      <div class="duda"><h3>¿Me sirve para la visa Schengen?</h3><p>Europa exige una cobertura médica mínima de 30.000 euros. Los planes Estándar y Premium la superan.</p></div>
+      <div class="duda"><h3>¿Y si viajo dentro de Chile?</h3><p>Los planes tienen ámbito nacional a más de 100 km de tu lugar de residencia, desde USD 10.000.</p></div>
+      <div class="duda"><h3>¿Sirve en un crucero?</h3><p>Sí. Los tres planes son válidos en cruceros, sin recargo.</p></div>
+      <div class="duda"><h3>¿Puedo viajar embarazada?</h3><p>Sí, con asistencia hasta la semana 25 en el Básico y hasta la semana 26 en Estándar y Premium.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [08] MUNDO ZURICH · programa de beneficios, en una franja breve
+     ============================================================ -->
+<section class="seccion">
+  <div class="contenedor mundo">
+    <div>
+      <h2>Con tu seguro, entras a <span class="destacado">Mundo Zurich</span></h2>
+      <p>Beneficios y servicios sin costo para ti y tu familia por ser cliente: telemedicina, veterinario online, asistencia en viajes y más.</p>
+      <p style="margin-top:16px"><a href="https://www.zurich.cl/mundo-zurich" target="_blank" rel="noopener"><strong>Conoce los 7 mundos</strong></a></p>
+    </div>
+    <ul class="mundo__lista">
+      <li>Salud</li><li>Mascotas</li><li>Bienestar</li><li>Movilidad</li><li>Viajes</li><li>Hogar</li><li>Finanzas</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     [09] CIERRE · banda azul con llamada final
+     ============================================================ -->
+<section class="cierre">
+  <div class="contenedor cierre__interior">
+    <h2>Viaja tranquilo, desde $27.630 por persona</h2>
+    <p>Cotiza en un minuto, compara los tres planes y contrata con el respaldo de Zurich. Si prefieres, llámanos al <a href="tel:+56225814449" data-telefono="(2) 2581 4449"><strong data-telefono-texto>(2) 2581 4449</strong></a>.</p>
+    <div class="cierre__acciones">
+      <a class="boton boton--blanco" href="#cotizar" data-ubicacion="cierre">Cotiza tu viaje<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12"/><path d="m11 5 5 5-5 5"/></svg></a>
+      <a class="boton boton--linea" style="color:#fff;border-color:#fff" data-whatsapp href="https://wa.me/56987902551?text=Hola%20Zurich" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+    </div>
+  </div>
+  <span class="forma forma--cierre-1" aria-hidden="true"></span>
+  <span class="forma forma--cierre-2" aria-hidden="true"></span>
+  <span class="forma forma--cierre-3" aria-hidden="true"></span>
+</section>
+
+</main>
+
+<!-- ============================================================
+     [10] LEGALES
+     OJO: los códigos depositados en la CMF quedan pendientes. Pídelos a Legal y
+     reemplaza el texto entre corchetes antes de publicar.
+     ============================================================ -->
+<section class="legales">
+  <div class="contenedor">
+    <p>Este informativo contiene un resumen de las coberturas, condiciones y limitaciones del Seguro de Asistencia en Viajes. Las prestaciones de asistencia son otorgadas por Universal Assistance. El Seguro de Accidentes Personales asociado es asegurado por Zurich Chile Seguros Generales S.A. El detalle de sus características, requisitos de asegurabilidad, extensión de la cobertura, limitaciones, prima y forma de pago se encuentra en las condiciones generales y cláusulas adicionales depositadas en la Comisión para el Mercado Financiero bajo los códigos [COMPLETAR CÓDIGOS POL / CAD VIGENTES], y en sus condiciones particulares.</p>
+    <p data-campana>(*) Campaña Verano Protegido, texto de ejemplo: válida para asistencias contratadas desde esta página entre el 1 de noviembre de 2026 y el 31 de enero de 2027. El 15% de descuento se aplica sobre la prima de tarifa del plan elegido. Las 12 cuotas sin interés dependen del emisor de la tarjeta y se gestionan en Webpay. Bases y condiciones en <a href="https://www.zurich.cl/conocenos/bases" target="_blank" rel="noopener">www.zurich.cl/conocenos/bases</a>.</p>
+    <p data-campana>Precios referenciales: valores obtenidos del cotizador el 23 de octubre de 2026 para 2 pasajeros de 35 y 42 años, 7 días de viaje con destino Sudamérica (total Plan Básico $55.259, Plan Estándar $66.319 y Plan Premium $98.247). El valor por persona corresponde al total dividido entre los dos pasajeros. El precio final depende del destino, las fechas, la cantidad de pasajeros y sus edades, y se confirma en el cotizador. Los montos de cobertura se expresan en dólares de los Estados Unidos de América y los de accidentes personales en Unidades de Fomento.</p>
+    <p>Mundo Zurich es un programa de fidelización de las compañías del grupo Zurich para clientes con seguros vigentes; sus beneficios son temporales y pueden modificarse o eliminarse, y no forman parte de la póliza contratada. Términos y condiciones en <a href="https://www.zurich.cl/mundo-zurich" target="_blank" rel="noopener">zurich.cl/mundo-zurich</a>.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     [11] PIE
+     ============================================================ -->
+<footer class="pie">
+  <div class="contenedor pie__interior">
+    <span>© Zurich Chile Seguros Generales S.A.</span>
+    <ul>
+      <li><a href="https://www.zurich.cl/conocenos/condiciones-de-uso" target="_blank" rel="noopener">Condiciones de uso</a></li>
+      <li><a href="https://www.zurich.cl/conocenos/politicas-de-privacidad" target="_blank" rel="noopener">Políticas de privacidad</a></li>
+      <li><a href="https://www.zurich.cl/conocenos/bases" target="_blank" rel="noopener">Bases legales</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+<!-- [12] BARRA FIJA EN MÓVIL · aparece al dejar atrás el hero -->
+<div class="barra-movil" id="barra-movil"><a class="boton boton--ancho" href="#cotizar" data-ubicacion="barra-movil">Cotiza tu viaje</a></div>
+
+
+<!-- ============================================================
+     [13] FICHAS DE DETALLE DE CADA PLAN
+     Contenido tomado de la ficha "Tu plan ... incluye" del cotizador (octubre 2026).
+     ============================================================ -->
+
+<!-- 13.1 PLAN BÁSICO -->
+<div class="detalle" id="detalle-basico" role="dialog" aria-modal="true" aria-labelledby="detalle-basico-titulo" hidden>
+  <div class="detalle__tarjeta">
+    <div class="detalle__cabecera">
+      <h2 id="detalle-basico-titulo">Tu <strong>Plan Básico</strong> incluye</h2>
+      <button type="button" class="detalle__cerrar" data-cerrar-detalle aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="detalle__cuerpo">
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 17s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 17 8c0 4.7-7 9-7 9Z"/></svg>Asistencia Médica</h3>
+        <div class="detalle__fila"><span>Asistencia médica por enfermedad / accidente</span><strong>USD 40.000</strong></div>
+        <div class="detalle__fila"><span>Teleasistencia</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Asistencia médica por pre-existencia*</span><strong>USD 400</strong></div>
+        <div class="detalle__fila"><span>Asistencia médica en caso de enfermedad o accidente / Nacional</span><strong>USD 10.000</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia de Covid-19 (evento múltiple)</span><strong>USD 10.000</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia por SARS COV2 Covid-19 · total*</span><strong>USD 500***</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia por SARS COV2 Covid-19 · por día*</span><strong>USD 100***</strong></div>
+        <p class="detalle__nota">***o el mínimo establecido por autoridad gubernamental en país de destino</p>
+        <div class="detalle__fila"><span>Odontología*</span><strong>USD 400</strong></div>
+        <div class="detalle__fila"><span>Medicamentos ambulatorio*</span><strong>USD 600</strong></div>
+        <div class="detalle__fila"><span>Días complementarios por internación*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia · total*</span><strong>USD 500</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia · por día*</span><strong>USD 100</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel familiar acompañante · total*</span><strong>USD 500</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel familiar acompañante · por día*</span><strong>USD 100</strong></div>
+        <div class="detalle__fila"><span>Práctica recreativa de deportes*</span><strong>USD 8.000</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6.5" width="13" height="10" rx="2"/><path d="M7.5 6.5V5a1.5 1.5 0 0 1 1.5-1.5h2A1.5 1.5 0 0 1 12.5 5v1.5"/></svg>Equipaje y Documentación</h3>
+        <div class="detalle__fila"><span>Asistencia en caso de extravío de documentos</span><strong>Incluido</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5c-.8 0-1.4.6-1.4 1.4v3.6L2.5 11v2l6.1-1.7V16l-2 1.4v1.1l3.4-1 3.4 1v-1.1L11.4 16v-4.7L17.5 13v-2l-6.1-3.5V3.9c0-.8-.6-1.4-1.4-1.4Z"/></svg>Traslados</h3>
+        <div class="detalle__fila"><span>Acompañamiento de menores*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Traslado de familiar por internación de más de 5 días del titular*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Viaje de regreso por enfermedad del titular*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Traslado y repatriación de restos*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Traslado y repatriación sanitaria*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Regreso anticipado por siniestro en domicilio*</span><strong>Incluido</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 14.5a3.5 3.5 0 0 1 0-7 4.5 4.5 0 0 1 8.7-1.3 3.2 3.2 0 0 1 .3 6.4"/><path d="M10 10v7"/><path d="m7.5 14.5 2.5 2.5 2.5-2.5"/></svg>Otros beneficios</h3>
+        <div class="detalle__fila"><span>Asistencia médica por Covid-19</span><strong>USD 40.000</strong></div>
+        <div class="detalle__fila"><span>Seguro Accidentes Personales · Incapacidad Total y Parcial Permanente h/65 años (Pol. Zurich)</span><strong>UF 1.000</strong></div>
+        <div class="detalle__fila"><span>Compensación por pérdida de equipaje</span><strong>USD 1.000</strong></div>
+        <div class="detalle__fila"><span>Gastos de alojamiento por aislamiento · exclusivamente en el ámbito de la República de Costa Rica</span><strong>USD 2.500</strong></div>
+        <div class="detalle__fila"><span>Gastos por demora de equipaje (8 horas)</span><strong>USD 200</strong></div>
+        <div class="detalle__fila"><span>Gastos por vuelo demorado (más de 6 hs)</span><strong>USD 100</strong></div>
+        <div class="detalle__fila"><span>Transferencia de fondos</span><strong>USD 2.000</strong></div>
+        <div class="detalle__fila"><span>Anticipo de fondos para fianza</span><strong>USD 8.500</strong></div>
+        <div class="detalle__fila"><span>Asistencia legal en caso de accidente</span><strong>USD 1.000</strong></div>
+        <div class="detalle__fila"><span>Localización de equipaje</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Asistencia embarazadas (hasta semana 25)*</span><strong>USD 8.000</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M10 6.5v4l2.5 1.5"/></svg>Condiciones de aplicabilidad</h3>
+        <div class="detalle__fila"><span>Válido en cruceros</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Límite de edad</span><strong>70 años</strong></div>
+        <div class="detalle__fila"><span>Ámbito de cobertura</span><strong>Internacional / Nacional**</strong></div>
+      </div>
+
+      <div class="detalle__notas">
+        <p>*Incluido dentro del límite de asistencia médica.</p>
+        <p>**Ámbito nacional: a más de 100 km del lugar de residencia.</p>
+      </div>
+    </div>
+    <div class="detalle__acciones">
+      <p class="detalle__precio">Desde<strong>$27.630 por persona</strong></p>
+      <a class="boton" href="#cotizar" data-cerrar-detalle data-ubicacion="detalle-basico">Cotizar este plan</a>
+    </div>
+  </div>
+</div>
+
+<!-- 13.2 PLAN ESTÁNDAR -->
+<div class="detalle" id="detalle-estandar" role="dialog" aria-modal="true" aria-labelledby="detalle-estandar-titulo" hidden>
+  <div class="detalle__tarjeta">
+    <div class="detalle__cabecera">
+      <h2 id="detalle-estandar-titulo">Tu <strong>Plan Estándar</strong> incluye</h2>
+      <button type="button" class="detalle__cerrar" data-cerrar-detalle aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="detalle__cuerpo">
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 17s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 17 8c0 4.7-7 9-7 9Z"/></svg>Asistencia Médica</h3>
+        <div class="detalle__fila"><span>Asistencia médica por enfermedad / accidente</span><strong>USD 80.000</strong></div>
+        <div class="detalle__fila"><span>Teleasistencia</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Asistencia médica por pre-existencia*</span><strong>USD 2.000</strong></div>
+        <div class="detalle__fila"><span>Asistencia médica en caso de enfermedad o accidente / Nacional</span><strong>USD 20.000</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia de Covid-19 (evento múltiple)</span><strong>USD 10.000</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia por SARS COV2 Covid-19 · total*</span><strong>USD 500***</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia por SARS COV2 Covid-19 · por día*</span><strong>USD 100***</strong></div>
+        <p class="detalle__nota">***o el mínimo establecido por autoridad gubernamental en país de destino</p>
+        <div class="detalle__fila"><span>Odontología*</span><strong>USD 600</strong></div>
+        <div class="detalle__fila"><span>Medicamentos ambulatorio*</span><strong>USD 2.500</strong></div>
+        <div class="detalle__fila"><span>Días complementarios por internación*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia · total*</span><strong>USD 500</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia · por día*</span><strong>USD 100</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel familiar acompañante · total*</span><strong>USD 500</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel familiar acompañante · por día*</span><strong>USD 100</strong></div>
+        <div class="detalle__fila"><span>Práctica recreativa de deportes*</span><strong>USD 10.000</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6.5" width="13" height="10" rx="2"/><path d="M7.5 6.5V5a1.5 1.5 0 0 1 1.5-1.5h2A1.5 1.5 0 0 1 12.5 5v1.5"/></svg>Equipaje y Documentación</h3>
+        <div class="detalle__fila"><span>Asesoría y gastos por demora de equipaje (8 horas)*****</span><strong>USD 300</strong></div>
+        <div class="detalle__fila"><span>Asistencia en caso de extravío de documentos</span><strong>Incluido</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5c-.8 0-1.4.6-1.4 1.4v3.6L2.5 11v2l6.1-1.7V16l-2 1.4v1.1l3.4-1 3.4 1v-1.1L11.4 16v-4.7L17.5 13v-2l-6.1-3.5V3.9c0-.8-.6-1.4-1.4-1.4Z"/></svg>Traslados</h3>
+        <div class="detalle__fila"><span>Acompañamiento de menores*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Traslado de familiar por internación de más de 5 días del titular*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Viaje de regreso por enfermedad del titular*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Traslado y repatriación de restos*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Traslado y repatriación sanitaria*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Regreso anticipado por siniestro en domicilio*</span><strong>Incluido</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 14.5a3.5 3.5 0 0 1 0-7 4.5 4.5 0 0 1 8.7-1.3 3.2 3.2 0 0 1 .3 6.4"/><path d="M10 10v7"/><path d="m7.5 14.5 2.5 2.5 2.5-2.5"/></svg>Otros beneficios</h3>
+        <div class="detalle__fila"><span>Asistencia médica por Covid-19</span><strong>USD 80.000</strong></div>
+        <div class="detalle__fila"><span>Seguro Accidentes Personales · Incapacidad Total y Parcial Permanente h/65 años (Pol. Zurich)</span><strong>UF 1.000</strong></div>
+        <div class="detalle__fila"><span>Asesoría y compensación por pérdida de equipaje complementaria (aéreo / marítimo)</span><strong>USD 1.000</strong></div>
+        <div class="detalle__fila"><span>Gastos por vuelo demorado (más de 6 hs)</span><strong>USD 150</strong></div>
+        <div class="detalle__fila"><span>Transferencia de fondos</span><strong>USD 3.000</strong></div>
+        <div class="detalle__fila"><span>Anticipo de fondos para fianza</span><strong>USD 10.000</strong></div>
+        <div class="detalle__fila"><span>Asistencia legal en caso de accidente</span><strong>USD 1.200</strong></div>
+        <div class="detalle__fila"><span>Asistencia embarazadas (hasta semana 26)*</span><strong>USD 10.000</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M10 6.5v4l2.5 1.5"/></svg>Condiciones de aplicabilidad</h3>
+        <div class="detalle__fila"><span>Válido en cruceros</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Límite de edad</span><strong>70 años</strong></div>
+        <div class="detalle__fila"><span>Ámbito de cobertura</span><strong>Internacional / Nacional**</strong></div>
+        <div class="detalle__fila"><span>Cúmulo por evento, accidente con múltiples titulares, a prorrata</span><strong>USD 400.000</strong></div>
+      </div>
+
+      <div class="detalle__notas">
+        <p>*****No aplica para vuelo de regreso a país de residencia.</p>
+        <p>*Incluido dentro del límite de asistencia médica.</p>
+        <p>**Ámbito nacional: a más de 100 km del lugar de residencia.</p>
+      </div>
+    </div>
+    <div class="detalle__acciones">
+      <p class="detalle__precio">Desde<strong>$33.160 por persona</strong></p>
+      <a class="boton" href="#cotizar" data-cerrar-detalle data-ubicacion="detalle-estandar">Cotizar este plan</a>
+    </div>
+  </div>
+</div>
+
+<!-- 13.3 PLAN PREMIUM -->
+<div class="detalle" id="detalle-premium" role="dialog" aria-modal="true" aria-labelledby="detalle-premium-titulo" hidden>
+  <div class="detalle__tarjeta">
+    <div class="detalle__cabecera">
+      <h2 id="detalle-premium-titulo">Tu <strong>Plan Premium</strong> incluye</h2>
+      <button type="button" class="detalle__cerrar" data-cerrar-detalle aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="detalle__cuerpo">
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 17s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 17 8c0 4.7-7 9-7 9Z"/></svg>Asistencia Médica</h3>
+        <div class="detalle__fila"><span>Asistencia médica por enfermedad / accidente</span><strong>USD 250.000</strong></div>
+        <div class="detalle__fila"><span>Teleasistencia</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Asistencia médica por pre-existencia*</span><strong>USD 3.000</strong></div>
+        <div class="detalle__fila"><span>Asistencia médica en caso de enfermedad o accidente / Nacional</span><strong>USD 62.500</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia de Covid-19 (evento múltiple)</span><strong>USD 10.000</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia por SARS COV2 Covid-19 · total*</span><strong>USD 1.000***</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia por SARS COV2 Covid-19 · por día*</span><strong>USD 100***</strong></div>
+        <p class="detalle__nota">***o el mínimo establecido por autoridad gubernamental en país de destino</p>
+        <div class="detalle__fila"><span>Odontología*</span><strong>USD 1.000</strong></div>
+        <div class="detalle__fila"><span>Medicamentos ambulatorio*</span><strong>USD 3.000</strong></div>
+        <div class="detalle__fila"><span>Días complementarios por internación*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia · total*</span><strong>USD 1.000</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel por convalecencia · por día*</span><strong>USD 100</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel familiar acompañante · total*</span><strong>USD 1.000</strong></div>
+        <div class="detalle__fila"><span>Gastos de hotel familiar acompañante · por día*</span><strong>USD 100</strong></div>
+        <div class="detalle__fila"><span>Práctica recreativa de deportes*</span><strong>USD 10.000</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6.5" width="13" height="10" rx="2"/><path d="M7.5 6.5V5a1.5 1.5 0 0 1 1.5-1.5h2A1.5 1.5 0 0 1 12.5 5v1.5"/></svg>Equipaje y Documentación</h3>
+        <div class="detalle__fila"><span>Asesoría y gastos por demora de equipaje (8 horas)*****</span><strong>USD 400</strong></div>
+        <div class="detalle__fila"><span>Asistencia en caso de extravío de documentos</span><strong>Incluido</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5c-.8 0-1.4.6-1.4 1.4v3.6L2.5 11v2l6.1-1.7V16l-2 1.4v1.1l3.4-1 3.4 1v-1.1L11.4 16v-4.7L17.5 13v-2l-6.1-3.5V3.9c0-.8-.6-1.4-1.4-1.4Z"/></svg>Traslados</h3>
+        <div class="detalle__fila"><span>Acompañamiento de menores*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Traslado de familiar por internación de más de 5 días del titular*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Viaje de regreso por enfermedad del titular*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Traslado y repatriación de restos*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Traslado y repatriación sanitaria*</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Regreso anticipado por siniestro en domicilio*</span><strong>Incluido</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 14.5a3.5 3.5 0 0 1 0-7 4.5 4.5 0 0 1 8.7-1.3 3.2 3.2 0 0 1 .3 6.4"/><path d="M10 10v7"/><path d="m7.5 14.5 2.5 2.5 2.5-2.5"/></svg>Otros beneficios</h3>
+        <div class="detalle__fila"><span>Asistencia médica por Covid-19</span><strong>USD 250.000</strong></div>
+        <div class="detalle__fila"><span>Seguro Accidentes Personales · Incapacidad Total y Parcial Permanente h/65 años (Pol. Zurich)</span><strong>UF 1.000</strong></div>
+        <div class="detalle__fila"><span>Asesoría y compensación por pérdida de equipaje complementaria (aéreo / marítimo)</span><strong>USD 2.000</strong></div>
+        <div class="detalle__fila"><span>Gastos por vuelo demorado (más de 6 hs)</span><strong>USD 200</strong></div>
+        <div class="detalle__fila"><span>Transferencia de fondos</span><strong>USD 5.000</strong></div>
+        <div class="detalle__fila"><span>Anticipo de fondos para fianza</span><strong>USD 12.000</strong></div>
+        <div class="detalle__fila"><span>Asistencia legal en caso de accidente</span><strong>USD 1.500</strong></div>
+        <div class="detalle__fila"><span>Asistencia embarazadas (hasta semana 26)*</span><strong>USD 10.000</strong></div>
+      </div>
+
+      <div class="detalle__grupo">
+        <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M10 6.5v4l2.5 1.5"/></svg>Condiciones de aplicabilidad</h3>
+        <div class="detalle__fila"><span>Válido en cruceros</span><strong>Incluido</strong></div>
+        <div class="detalle__fila"><span>Límite de edad</span><strong>70 años</strong></div>
+        <div class="detalle__fila"><span>Ámbito de cobertura</span><strong>Internacional / Nacional**</strong></div>
+        <div class="detalle__fila"><span>Cúmulo por evento, accidente con múltiples titulares, a prorrata</span><strong>USD 1.500.000</strong></div>
+      </div>
+
+      <div class="detalle__notas">
+        <p>*****No aplica para vuelo de regreso a país de residencia.</p>
+        <p>*Incluido dentro del límite de asistencia médica.</p>
+        <p>**Ámbito nacional: a más de 100 km del lugar de residencia.</p>
+      </div>
+    </div>
+    <div class="detalle__acciones">
+      <p class="detalle__precio">Desde<strong>$49.124 por persona</strong></p>
+      <a class="boton" href="#cotizar" data-cerrar-detalle data-ubicacion="detalle-premium">Cotizar este plan</a>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+/* ------------------------------------------------------------------
+   [14] MEDICIÓN · eventos en dataLayer para Google Tag Manager
+   ------------------------------------------------------------------ */
+window.dataLayer = window.dataLayer || [];
+function registrar(evento, datos){ window.dataLayer.push(Object.assign({event: evento}, datos || {})); }
+registrar('landing_vista', {pagina: document.title});
+
+/* ------------------------------------------------------------------
+   [15] TRASPASO DE PARÁMETROS DE CAMPAÑA · utm_*, gclid, gbraid, wbraid
+   Se añaden a cada enlace con data-cotizador para no perder la atribución
+   al pasar del landing al cotizador (otro dominio).
+   ------------------------------------------------------------------ */
+function parametrosDeCampana(){
+  var actuales = new URLSearchParams(window.location.search), salida = new URLSearchParams();
+  actuales.forEach(function(valor, clave){
+    if (/^utm_/i.test(clave) || /^(gclid|gbraid|wbraid|fbclid|msclkid)$/i.test(clave)) salida.set(clave, valor);
+  });
+  return salida.toString();
+}
+function destinoConCampana(url){
+  var extra = parametrosDeCampana();
+  if (!extra) return url;
+  return url + (url.indexOf('?') === -1 ? '?' : '&') + extra;
+}
+document.querySelectorAll('a[data-cotizador]').forEach(function(enlace){
+  enlace.href = destinoConCampana(enlace.href);
+});
+
+/* Clic en cualquier botón de cotizar */
+document.querySelectorAll('[data-ubicacion]').forEach(function(elemento){
+  elemento.addEventListener('click', function(){
+    registrar('clic_cotizar', {ubicacion: elemento.getAttribute('data-ubicacion')});
+  });
+});
+
+/* ------------------------------------------------------------------
+   [16] BARRA FIJA EN MÓVIL · visible cuando el hero sale de pantalla
+   ------------------------------------------------------------------ */
+(function(){
+  var barra = document.getElementById('barra-movil'), hero = document.querySelector('.hero');
+  if (!barra || !hero || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(entradas){
+    barra.classList.toggle('visible', !entradas[0].isIntersecting);
+  }, {threshold: 0.05}).observe(hero);
+})();
+
+/* ------------------------------------------------------------------
+   [17] COTIZADOR · armado y envío al motor de cotización
+
+   CONTRATO CON EL MOTOR · verificado el 23 de octubre de 2026
+     Dirección  https://cl.ec.universal-assistance.com/Ventas/CotizarExt
+     Método     POST. Por GET responde "Solicitud Externa por GET Inválida".
+     Respuesta  redirige a /ofertas-asistencia-al-viajero con los tres planes.
+
+   CAMPOS QUE ESPERA
+     Destino              uno de los valores del <select> (no el texto visible)
+     FechaInicio          dd/mm/aaaa
+     FechaFin             dd/mm/aaaa
+     CantidadDias         días contando ida y vuelta (26/10 al 01/11 = 7)
+     CantidadPasajeros    1 a 10
+     Edad1 … Edad10       una por pasajero, en años
+     TipoViaje            "Un viaje"
+     Origen               "CHILE"
+     CCTLD                "CL"
+     CodigoOrganizacion   identifica a Zurich Chile
+     CodigoConvenio       identifica el convenio de Zurich Chile
+     UrlHome              dirección de vuelta
+     cs, cm, cn, ck, cc   fuente, medio, campaña, término y contenido
+     dr, ua, sr, vp       referente, navegador, pantalla y ventana
+
+   SI DEJA DE COTIZAR: lo primero que hay que revisar son estos nombres, porque
+   los define Universal Assistance y pueden cambiarlos sin aviso. Mientras tanto,
+   el enlace "Ver el cotizador completo" del pie es la salida de respaldo.
+   ------------------------------------------------------------------ */
+var COTIZADOR = {
+  TipoViaje:          'Un viaje',
+  Origen:             'CHILE',
+  CCTLD:              'CL',
+  CodigoOrganizacion: '1-342FWU',
+  CodigoConvenio:     '1-DKB7AGJ'
+};
+
+(function(){
+  var form = document.getElementById('buscador');
+  if (!form) return;
+  var ida       = document.getElementById('ida');
+  var vuelta    = document.getElementById('vuelta');
+  var pasajeros = document.getElementById('pasajeros');
+  var edades    = document.getElementById('edades');
+  var aviso     = document.getElementById('buscador-error');
+  var espera    = document.getElementById('buscador-espera');
+  var boton     = form.querySelector('.buscador__enviar');
+  var textoBoton = boton.innerHTML;   /* lleva el ícono dentro, por eso innerHTML */
+
+  /* --- 17.1 Fechas: no se puede viajar hacia atrás --- */
+  function enIso(fecha){
+    var cero = function(n){ return (n < 10 ? '0' : '') + n; };
+    return fecha.getFullYear() + '-' + cero(fecha.getMonth() + 1) + '-' + cero(fecha.getDate());
+  }
+  var desdeHoy = enIso(new Date());
+  ida.min = desdeHoy;
+  vuelta.min = desdeHoy;
+  ida.addEventListener('change', function(){
+    vuelta.min = ida.value || desdeHoy;
+    if (vuelta.value && vuelta.value < ida.value) vuelta.value = ida.value;
+  });
+  /* Si eligen un regreso anterior a la ida, se corrige en el momento en vez de
+     dejar el formulario trabado con un aviso del navegador */
+  vuelta.addEventListener('change', function(){
+    if (ida.value && vuelta.value && vuelta.value < ida.value) vuelta.value = ida.value;
+  });
+
+  /* --- 17.2 Una casilla de edad por pasajero --- */
+  function dibujarEdades(){
+    var cuantos = parseInt(pasajeros.value, 10) || 1;
+    var previas = {};
+    edades.querySelectorAll('input').forEach(function(i){ previas[i.name] = i.value; });
+    edades.innerHTML = '<p class="buscador__edades-titulo">' +
+      (cuantos === 1 ? '¿Qué edad tienes?' : 'Edades de quienes viajan') + '</p>';
+    for (var n = 1; n <= cuantos; n++) {
+      var campo = document.createElement('div');
+      campo.className = 'buscador__edad';
+      var etiqueta = cuantos === 1 ? 'Edad' : 'Edad pasajero ' + n;
+      campo.innerHTML = '<label for="edad' + n + '">' + etiqueta + '</label>' +
+        '<input type="number" id="edad' + n + '" name="Edad' + n + '" min="0" max="99" ' +
+        'inputmode="numeric" placeholder="Años" required value="' + (previas['Edad' + n] || '') + '">';
+      edades.appendChild(campo);
+    }
+  }
+  pasajeros.addEventListener('change', dibujarEdades);
+  dibujarEdades();
+
+  /* --- 17.3 Campos que el motor necesita y el visitante no escribe --- */
+  function ponerOculto(nombre, valor){
+    var campo = form.querySelector('input[type="hidden"][name="' + nombre + '"]');
+    if (!campo) {
+      campo = document.createElement('input');
+      campo.type = 'hidden';
+      campo.name = nombre;
+      form.appendChild(campo);
+    }
+    campo.value = valor == null ? '' : valor;
+  }
+  function aDiaMesAno(iso){            /* 2026-10-26 -> 26/10/2026 */
+    var p = iso.split('-');
+    return p[2] + '/' + p[1] + '/' + p[0];
+  }
+  function diasDeViaje(desde, hasta){  /* contando ida y vuelta */
+    var uno = new Date(desde), otro = new Date(hasta);
+    return Math.round((otro - uno) / 86400000) + 1;
+  }
+
+  /* --- 17.4 Revisión antes de enviar · el aviso sale arriba del botón y lleva
+     el foco al campo que falta, para que nunca parezca que no pasa nada --- */
+  function reclamar(mensaje, campo){
+    aviso.textContent = mensaje;
+    aviso.classList.add('visible');
+    if (campo) {
+      campo.focus({preventScroll:true});
+      campo.scrollIntoView({block:'center', behavior:'smooth'});
+    }
+  }
+  function loQueFalta(){
+    var destino = form.querySelector('[name="Destino"]');
+    if (!destino.value)  return ['Elige a dónde viajas.', destino];
+    if (!ida.value)      return ['Falta la fecha de ida.', ida];
+    if (!vuelta.value)   return ['Falta la fecha de regreso.', vuelta];
+    if (vuelta.value < ida.value) return ['La fecha de regreso no puede ser anterior a la de ida.', vuelta];
+    var casillas = edades.querySelectorAll('input'), n;
+    for (n = 0; n < casillas.length; n++) {
+      var edad = casillas[n].value.trim();
+      if (edad === '') {
+        return [casillas.length === 1
+          ? 'Falta la edad de quien viaja: define el precio y la cobertura.'
+          : 'Falta la edad del pasajero ' + (n + 1) + ': define el precio y la cobertura.', casillas[n]];
+      }
+      if (isNaN(edad) || Number(edad) < 0 || Number(edad) > 99) {
+        return ['Revisa la edad del pasajero ' + (n + 1) + ': tiene que ir entre 0 y 99 años.', casillas[n]];
+      }
+    }
+    return null;
+  }
+
+  /* --- 17.5 Envío --- */
+  form.addEventListener('submit', function(e){
+    aviso.classList.remove('visible');
+
+    var falta = loQueFalta();
+    if (falta) {
+      e.preventDefault();
+      reclamar(falta[0], falta[1]);
+      return;
+    }
+
+    /* Misma pestaña, igual que hace el sitio de Universal Assistance con su propio
+       buscador. Lo intentamos un tiempo en pestaña nueva y algunos navegadores tratan
+       distinto un envío que abre ventana: copiando su comportamiento al pie de la
+       letra hay menos de qué desconfiar. Para abrirlo aparte, cambia '_self' por '_blank'. */
+    form.target = '_self';
+    espera.hidden = false;
+    boton.disabled = true;
+    boton.innerHTML = 'Buscando planes…';
+    window.setTimeout(function(){
+      boton.disabled = false;
+      boton.innerHTML = textoBoton;
+    }, 6000);
+
+    /* Mandamos la lista completa de campos, incluidos los que van vacíos, tal como la
+       arma el propio sitio de Universal Assistance. Así el motor recibe exactamente lo
+       mismo que cuando alguien cotiza en su página, sin variantes nuestras. */
+    var parametros = new URLSearchParams(parametrosDeCampana());
+    var cuantos = parseInt(pasajeros.value, 10) || 1;
+    var envio = {
+      IPOrigen:          '',   /* su página lo rellena en el servidor; vacío es válido */
+      TipoViaje:         COTIZADOR.TipoViaje,
+      FechaInicio:       aDiaMesAno(ida.value),
+      FechaFin:          aDiaMesAno(vuelta.value),
+      CantidadDias:      diasDeViaje(ida.value, vuelta.value),
+      Origen:            COTIZADOR.Origen,
+      CCTLD:             COTIZADOR.CCTLD,
+      CodigoOrganizacion: COTIZADOR.CodigoOrganizacion,
+      CodigoConvenio:    COTIZADOR.CodigoConvenio,
+      UrlHome:           window.location.href.split('?')[0],
+      /* Datos de contacto: su buscador los deja vacíos si no se piden */
+      Email:'', Nombre:'', Apellido:'', CodigoArea:'', NumeroTelefono:'', PromoCode:'',
+      /* Atribución: si la visita trae utm propias se respetan; si no, las de Zurich */
+      cs: parametros.get('utm_source')   || 'zurich_cl',
+      cm: parametros.get('utm_medium')   || 'referral',
+      cn: parametros.get('utm_campaign') || 'zurich_cl_prod_digitales',
+      ck: parametros.get('utm_term')     || '',
+      cc: parametros.get('utm_content')  || '',
+      dr: document.referrer || '',
+      ua: navigator.userAgent,
+      sr: screen.width + 'x' + screen.height,
+      vp: window.innerWidth + 'x' + window.innerHeight
+    };
+    /* Las diez edades siempre viajan: las que sobran, vacías */
+    for (var e = cuantos + 1; e <= 10; e++) envio['Edad' + e] = '';
+    Object.keys(envio).forEach(function(nombre){ ponerOculto(nombre, envio[nombre]); });
+
+    registrar('cotizar_enviado', {
+      destino:   form.querySelector('[name="Destino"]').value,
+      dias:      diasDeViaje(ida.value, vuelta.value),
+      pasajeros: pasajeros.value
+    });
+  });
+})();
+
+/* ------------------------------------------------------------------
+   [18] FICHAS DE DETALLE · abrir, cerrar y devolver el foco
+   ------------------------------------------------------------------ */
+(function(){
+  var abierta = null, origen = null;
+
+  function abrir(nombre){
+    var ficha = document.getElementById('detalle-' + nombre);
+    if (!ficha) return;
+    origen = document.activeElement;
+    ficha.hidden = false;
+    ficha.classList.add('abierta');
+    document.body.classList.add('sin-scroll');
+    abierta = ficha;
+    var cerrar = ficha.querySelector('.detalle__cerrar');
+    if (cerrar) cerrar.focus();
+    registrar('ver_detalle_plan', {plan: nombre});
+  }
+
+  function cerrar(){
+    if (!abierta) return;
+    abierta.classList.remove('abierta');
+    abierta.hidden = true;
+    document.body.classList.remove('sin-scroll');
+    abierta = null;
+    if (origen && origen.focus) origen.focus();
+  }
+
+  document.querySelectorAll('[data-detalle]').forEach(function(boton){
+    boton.addEventListener('click', function(){ abrir(boton.getAttribute('data-detalle')); });
+  });
+  document.querySelectorAll('[data-cerrar-detalle]').forEach(function(boton){
+    boton.addEventListener('click', cerrar);
+  });
+  /* Clic en el fondo oscuro */
+  document.querySelectorAll('.detalle').forEach(function(ficha){
+    ficha.addEventListener('click', function(e){ if (e.target === ficha) cerrar(); });
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') cerrar(); });
+})();
+
+</script>
+
+<!-- [00.1] POPUP · promoción o aviso emergente en tres tamaños (pequeño, mediano, grande).
+     Se enciende, se apaga y se configura desde Configuración en el modo edición (?editar).
+     Textos de EJEMPLO. -->
+<div class="popup" data-tamano="mediano" data-encendido="no" data-retardo="3" data-una-vez="si" role="dialog" aria-modal="true" aria-labelledby="popup-titulo" hidden>
+  <div class="popup__tarjeta">
+    <button class="popup__cerrar" type="button" aria-label="Cerrar">&times;</button>
+    <div class="popup__visual"><img alt=""></div>
+    <div class="popup__contenido">
+      <span class="popup__etiqueta">Solo por hoy</span>
+      <h2 class="popup__titulo" id="popup-titulo">Viaja tranquilo desde $27.630 por persona</h2>
+      <p class="popup__texto">Cotiza en un minuto tu asistencia en viajes y contrata online, con el respaldo de Zurich.</p>
+      <div class="popup__acciones"><a class="boton" data-cotizador href="https://www.universal-assistance.com/cl/zurich?utm_source=zurich_cl&amp;utm_medium=referral&amp;utm_campaign=zurich_cl_prod_digitales" data-ubicacion="popup">Cotizar ahora</a><a class="boton boton--linea" href="#" data-popup-cerrar>Ahora no</a></div>
+      <p class="popup__nota">Texto de ejemplo: cámbialo desde el modo edición.</p>
+    </div>
+  </div>
+</div>
+<!-- fin [00.1] POPUP -->
+
+<!-- ============================================================
+     [16] MODO EDICIÓN · se activa agregando ?editar a la dirección de la página.
+     El visitante nunca lo ve. Permite editar los textos en su lugar, encender la
+     campaña, la huincha superior y el popup, cambiar enlaces, deshacer, guardar un
+     borrador en el navegador, descargar el HTML y publicar en GitHub.
+     ============================================================ -->
+<style id="editor-estilos">
+/* ---- Huincha superior y popup: visibles para el visitante cuando están encendidos ---- */
+.huincha{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 48px 10px 16px;text-align:center;font-size:var(--letra-14);font-weight:600;position:relative}
+.huincha[hidden]{display:none}
+.huincha--amarilla{background:var(--campana);color:var(--azul-oscuro)}           /* aviso: Lima sobre azul oscuro */
+.huincha--azul{background:var(--azul-zurich);color:var(--blanco)}                  /* informativa: azul héroe con texto blanco */
+.huincha__cerrar{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;background:transparent;color:inherit;font-size:var(--letra-20);line-height:1;cursor:pointer;border-radius:50%}
+.huincha--amarilla .huincha__cerrar:hover{background:#F2EA5A}
+.huincha--azul .huincha__cerrar:hover{background:var(--azul-oscuro)}
+.popup{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:16px;background:var(--azul-oscuro)}
+.popup[hidden]{display:none}
+.popup__tarjeta{background:var(--blanco);color:var(--azul-oscuro);border-radius:var(--radio-tarjeta);padding:28px 24px 24px;width:100%;position:relative;display:flex;flex-direction:column;justify-content:center;gap:12px;max-height:88vh}
+.popup[data-tamano="pequeno"] .popup__tarjeta{max-width:360px;text-align:center}
+.popup[data-tamano="mediano"] .popup__tarjeta{max-width:560px}
+.popup[data-tamano="grande"] .popup__tarjeta{max-width:900px}
+@media(min-width:900px){
+  .popup[data-tamano="grande"] .popup__tarjeta{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;padding:32px}
+  .popup[data-tamano="grande"] .popup__visual{display:block}
+}
+.popup__visual{display:none;background:var(--azul-claro);border-radius:12px;min-height:220px;overflow:hidden}
+.popup__visual img{width:100%;height:100%;object-fit:cover;display:block}
+.popup__contenido{display:flex;flex-direction:column;gap:12px;min-width:0}
+.popup__etiqueta{display:inline-block;align-self:flex-start;background:var(--campana);color:var(--azul-oscuro);font-size:var(--letra-12);font-weight:700;padding:4px 10px;border-radius:999px}
+.popup[data-tamano="pequeno"] .popup__etiqueta{align-self:center}
+.popup__titulo{font-size:var(--letra-24);line-height:var(--interlineado-titulo);font-weight:700;margin:0}
+@media(min-width:900px){.popup[data-tamano="grande"] .popup__titulo{font-size:var(--letra-32)}}
+.popup__texto{font-size:var(--letra-16);margin:0;text-align:justify}
+.popup[data-tamano="pequeno"] .popup__texto{text-align:center}
+.popup__acciones{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+.popup[data-tamano="pequeno"] .popup__acciones{justify-content:center}
+.popup__cerrar{position:absolute;right:10px;top:10px;width:36px;height:36px;border:0;background:var(--blanco-zurich);color:var(--azul-oscuro);font-size:var(--letra-20);line-height:1;border-radius:50%;cursor:pointer}
+.popup__nota{font-size:var(--letra-12);color:var(--gris-legal);margin:0}
+
+/* ---- Interfaz del editor (solo con ?editar) ---- */
+.ed-activo{padding-bottom:72px}
+.ed-activo .barra-movil{display:none !important}
+.ed-activo [contenteditable]{outline:1px dashed var(--azul-medio);outline-offset:3px;cursor:text;min-width:1ch}
+.ed-activo [contenteditable]:hover{outline-color:var(--azul-zurich)}
+.ed-activo [contenteditable]:focus{outline:2px solid var(--azul-zurich);background:#FFFBD6}
+.ed-activo .popup{z-index:40}  /* en edición el popup queda bajo la barra y el panel */
+.ed-ui{font-family:"Zurich Sans",Inter,Arial,Helvetica,sans-serif;color:var(--azul-oscuro)}
+.ed-barra{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--azul-oscuro);color:var(--blanco);display:flex;align-items:center;gap:8px;padding:10px 12px;overflow-x:auto;white-space:nowrap}
+.ed-barra__titulo{font-weight:700;font-size:var(--letra-14);margin-right:4px;flex:0 0 auto}
+.ed-boton{flex:0 0 auto;border:1px solid var(--blanco);background:transparent;color:var(--blanco);border-radius:999px;padding:8px 14px;font-size:var(--letra-14);font-weight:600;cursor:pointer;min-height:40px}
+.ed-boton:disabled{opacity:.45;cursor:default}
+.ed-boton--principal{background:var(--blanco);color:var(--azul-oscuro)}
+.ed-boton--guardar{background:var(--campana);color:var(--azul-oscuro);border-color:var(--campana)}
+.ed-panel{position:fixed;top:0;right:0;bottom:64px;width:100%;max-width:400px;z-index:90;background:var(--blanco);box-shadow:-8px 0 24px rgba(0,0,0,.12);display:flex;flex-direction:column;transform:translateX(105%);transition:transform .2s}
+.ed-panel.abierto{transform:translateX(0)}
+.ed-panel__cabecera{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--azul-zurich);color:var(--blanco)}
+.ed-panel__cabecera h2{font-size:var(--letra-18);margin:0}
+.ed-panel__cerrar{border:0;background:transparent;color:var(--blanco);font-size:var(--letra-24);cursor:pointer;line-height:1}
+.ed-panel__cuerpo{overflow-y:auto;padding:4px 16px 24px;flex:1}
+.ed-grupo{border-bottom:1px solid var(--gris-linea);padding:14px 0}
+.ed-grupo__titulo{display:flex;align-items:center;justify-content:space-between;font-size:var(--letra-16);font-weight:700;margin:0 0 8px}
+.ed-campo{display:flex;flex-direction:column;gap:4px;margin:8px 0}
+.ed-campo label{font-size:var(--letra-12);font-weight:600;color:var(--gris-legal)}
+.ed-campo input,.ed-campo select,.ed-campo textarea{font:inherit;font-size:var(--letra-14);padding:9px 10px;border:1px solid var(--gris-linea);border-radius:8px;color:var(--azul-oscuro);background:var(--blanco);width:100%}
+.ed-campo textarea{min-height:64px;resize:vertical}
+.ed-interruptor{display:flex;align-items:center;gap:8px;font-size:var(--letra-14);font-weight:600;cursor:pointer}
+.ed-interruptor input{width:20px;height:20px;accent-color:var(--azul-zurich)}
+.ed-opciones{display:flex;gap:6px;flex-wrap:wrap}
+.ed-opcion{border:1px solid var(--gris-linea);background:var(--blanco);color:var(--azul-oscuro);border-radius:999px;padding:6px 12px;font-size:var(--letra-14);cursor:pointer}
+.ed-opcion.activa{background:var(--azul-zurich);color:var(--blanco);border-color:var(--azul-zurich)}
+.ed-ayuda{font-size:var(--letra-12);color:var(--gris-legal);margin:4px 0 0;text-align:left}
+.ed-aviso{position:fixed;left:12px;bottom:76px;z-index:95;background:var(--azul-oscuro);color:var(--blanco);padding:10px 16px;border-radius:999px;font-size:var(--letra-14);max-width:min(92vw,560px);text-align:left;display:none}
+.ed-aviso.visible{display:block}
+.ed-aviso a{color:var(--campana)}
+.ed-panel__acciones{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.ed-panel__acciones .ed-boton{border-color:var(--azul-zurich);color:var(--azul-zurich)}
+.ed-panel__acciones .ed-boton--principal{background:var(--azul-zurich);color:var(--blanco)}
+@media(max-width:899px){.ed-panel{max-width:none}}
+</style>
+<script id="editor-script">
+(function(){
+  'use strict';
+  /* ---------- 16.0 Comportamiento para el visitante: huincha y popup ---------- */
+  var huincha = document.querySelector('.huincha');
+  var popup = document.querySelector('.popup');
+  var enEdicion = /[?&]editar\b/.test(window.location.search);
+  function cerrarPopup(){ if (popup) popup.hidden = true; }
+  if (huincha) {
+    var cerrarHuincha = huincha.querySelector('.huincha__cerrar');
+    if (cerrarHuincha) cerrarHuincha.addEventListener('click', function(){ if (!enEdicion) huincha.hidden = true; });
+  }
+  if (popup) {
+    popup.querySelectorAll('.popup__cerrar,[data-popup-cerrar]').forEach(function(b){ b.addEventListener('click', function(e){ if (enEdicion) { e.preventDefault(); return; } cerrarPopup(); }); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !enEdicion) cerrarPopup(); });
+    if (!enEdicion && popup.getAttribute('data-encendido') === 'si') {
+      var unaVez = popup.getAttribute('data-una-vez') === 'si';
+      var clave = 'popup-visto-' + window.location.pathname;
+      var yaVisto = false;
+      try { yaVisto = unaVez && window.sessionStorage.getItem(clave) === 'si'; } catch (e) {}
+      if (!yaVisto) {
+        var retardo = parseInt(popup.getAttribute('data-retardo') || '0', 10) * 1000;
+        window.setTimeout(function(){
+          popup.hidden = false;
+          try { if (unaVez) window.sessionStorage.setItem(clave, 'si'); } catch (e) {}
+          if (window.dataLayer) window.dataLayer.push({event: 'popup_mostrado'});
+        }, retardo);
+      }
+    }
+  }
+
+  if (!enEdicion) return;
+  /* ---------- 16.1 Activación del modo edición ---------- */
+  document.documentElement.classList.add('ed-activo');
+  document.body.classList.add('ed-activo');
+  var cabecera = document.querySelector('header'), principal = document.querySelector('main'), pie = document.querySelector('footer');
+  var contenedores = [cabecera, principal, pie, huincha, popup].filter(Boolean);
+  var SELECTOR = 'h1,h2,h3,h4,p,li,label,small,a.boton,.etiqueta-campana,.cabecera__telefono,.popup__etiqueta,.huincha__texto,.pie__copyright';
+
+  function activarEdicion(){
+    var candidatos = [];
+    contenedores.forEach(function(c){ candidatos = candidatos.concat(Array.prototype.slice.call(c.querySelectorAll(SELECTOR))); });
+    candidatos.forEach(function(el){
+      if (el.closest('.ed-ui')) return;
+      if (candidatos.some(function(otro){ return otro !== el && el.contains(otro); })) return; /* solo el elemento más interno */
+      if (!el.textContent.trim()) return;
+      el.setAttribute('contenteditable', 'true');
+      el.setAttribute('spellcheck', 'true');
+    });
+  }
+  /* Enlaces y botones no navegan mientras se edita; Enter no crea párrafos; pegar entra como texto plano */
+  document.addEventListener('click', function(e){
+    var enlace = e.target.closest('a,button');
+    if (enlace && !enlace.closest('.ed-ui')) e.preventDefault();
+  }, true);
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' && e.target.isContentEditable && !e.shiftKey) { e.preventDefault(); e.target.blur(); }
+  });
+  document.addEventListener('paste', function(e){
+    if (!e.target.isContentEditable) return;
+    e.preventDefault();
+    document.execCommand('insertText', false, (e.clipboardData || window.clipboardData).getData('text'));
+  });
+
+  /* ---------- 16.2 Interfaz: barra inferior, panel de ajustes y avisos ---------- */
+  var ui = document.createElement('div'); ui.className = 'ed-ui';
+  ui.innerHTML =
+    '<div class="ed-barra">' +
+      '<span class="ed-barra__titulo">Modo edición</span>' +
+      '<button class="ed-boton" data-accion="deshacer" disabled>Deshacer</button>' +
+      '<button class="ed-boton" data-accion="rehacer" disabled>Rehacer</button>' +
+      '<button class="ed-boton ed-boton--principal" data-accion="ajustes">Configuración</button>' +
+      '<button class="ed-boton" data-accion="descargar">Descargar HTML</button>' +
+      '<button class="ed-boton ed-boton--guardar" data-accion="publicar">Guardar y publicar</button>' +
+      '<button class="ed-boton" data-accion="salir">Salir</button>' +
+    '</div>' +
+    '<div class="ed-aviso" id="ed-aviso"></div>' +
+    '<aside class="ed-panel" id="ed-panel" aria-label="Configuración de la landing">' +
+      '<div class="ed-panel__cabecera"><h2>Configuración</h2><button class="ed-panel__cerrar" data-accion="cerrar-panel" aria-label="Cerrar">&times;</button></div>' +
+      '<div class="ed-panel__cuerpo">' +
+
+      '<div class="ed-grupo"><p class="ed-grupo__titulo">Campaña <label class="ed-interruptor"><input type="checkbox" id="ed-campana"> Encendida</label></p>' +
+        '<p class="ed-ayuda">Muestra u oculta la etiqueta, el texto de promoción, su nota y el legal (*). Los textos se editan tocándolos en la página.</p></div>' +
+
+      '<div class="ed-grupo"><p class="ed-grupo__titulo">Huincha superior <label class="ed-interruptor"><input type="checkbox" id="ed-huincha"> Encendida</label></p>' +
+        '<div class="ed-campo"><label>Color</label><div class="ed-opciones" id="ed-huincha-color"><button class="ed-opcion" data-valor="amarilla">Amarilla (aviso)</button><button class="ed-opcion" data-valor="azul">Azul (informativa)</button></div></div>' +
+        '<label class="ed-interruptor"><input type="checkbox" id="ed-huincha-cerrar"> El visitante puede cerrarla</label>' +
+        '<p class="ed-ayuda">El texto se edita tocándolo en la huincha.</p></div>' +
+
+      '<div class="ed-grupo"><p class="ed-grupo__titulo">Popup <label class="ed-interruptor"><input type="checkbox" id="ed-popup"> Encendido</label></p>' +
+        '<div class="ed-campo"><label>Tamaño</label><div class="ed-opciones" id="ed-popup-tamano"><button class="ed-opcion" data-valor="pequeno">Pequeño</button><button class="ed-opcion" data-valor="mediano">Mediano</button><button class="ed-opcion" data-valor="grande">Grande</button></div></div>' +
+        '<div class="ed-campo"><label>Aparece después de (segundos)</label><input type="number" id="ed-popup-retardo" min="0" max="60" step="1"></div>' +
+        '<div class="ed-campo"><label>Enlace del botón del popup</label><input type="text" id="ed-popup-enlace" placeholder="#cotizar o una dirección"></div>' +
+        '<div class="ed-campo"><label>Imagen del popup grande (dirección)</label><input type="text" id="ed-popup-imagen" placeholder="https://..."></div>' +
+        '<label class="ed-interruptor"><input type="checkbox" id="ed-popup-unavez"> Mostrar una sola vez por visita</label>' +
+        '<p class="ed-ayuda">Mientras editas, el popup queda visible para que lo veas; apágalo para seguir editando la página de fondo. El retardo aplica al visitante. Etiqueta, título, texto y botón se editan tocándolos.</p></div>' +
+
+      '<div class="ed-grupo"><p class="ed-grupo__titulo">Enlaces</p>' +
+        '<div class="ed-campo"><label>Dirección del cotizador</label><input type="text" id="ed-cotizador"></div>' +
+        '<div class="ed-campo"><label>Teléfono (como se muestra)</label><input type="text" id="ed-telefono"></div>' +
+        '<div class="ed-campo"><label>WhatsApp (dirección wa.me)</label><input type="text" id="ed-whatsapp"></div></div>' +
+
+      '<div class="ed-grupo"><p class="ed-grupo__titulo">Publicación en GitHub</p>' +
+        '<div class="ed-campo"><label>Repositorio (usuario/nombre)</label><input type="text" id="ed-repo" placeholder="andresgamonalm/landing-asistencia-viajes"></div>' +
+        '<div class="ed-campo"><label>Rama</label><input type="text" id="ed-rama" value="main"></div>' +
+        '<div class="ed-campo"><label>Archivo dentro del repositorio</label><input type="text" id="ed-ruta"></div>' +
+        '<div class="ed-campo"><label>Token de GitHub (solo contenido de ese repositorio)</label><input type="password" id="ed-token" autocomplete="off"></div>' +
+        '<label class="ed-interruptor"><input type="checkbox" id="ed-recordar" checked> Recordar en este navegador</label>' +
+        '<p class="ed-ayuda">El token se guarda en tu navegador, nunca dentro del archivo. Cloudflare Pages publica el cambio en uno o dos minutos.</p>' +
+        '<div class="ed-panel__acciones"><button class="ed-boton ed-boton--principal" data-accion="publicar">Guardar y publicar</button><button class="ed-boton" data-accion="descargar">Descargar HTML</button><button class="ed-boton" data-accion="borrar-borrador">Borrar borrador</button></div></div>' +
+
+      '</div>' +
+    '</aside>';
+  document.body.appendChild(ui);
+  var panel = document.getElementById('ed-panel'), aviso = document.getElementById('ed-aviso');
+  var temporizadorAviso;
+  function avisar(html, ms){ aviso.innerHTML = html; aviso.classList.add('visible'); clearTimeout(temporizadorAviso); temporizadorAviso = setTimeout(function(){ aviso.classList.remove('visible'); }, ms || 3500); }
+  function campo(id){ return document.getElementById(id); }
+
+  /* ---------- 16.3 Deshacer, rehacer y borrador ---------- */
+  var historial = [], indice = -1, limite = 60;
+  function estado(){ return contenedores.map(function(c){ return c.innerHTML; }); }
+  function aplicar(e){ contenedores.forEach(function(c, i){ c.innerHTML = e[i]; }); activarEdicion(); leerEstadoEnPanel(); }
+  function guardarPaso(){
+    historial = historial.slice(0, indice + 1); historial.push(estado());
+    if (historial.length > limite) historial.shift(); indice = historial.length - 1;
+    actualizarBotones(); guardarBorrador();
+  }
+  function actualizarBotones(){ ui.querySelector('[data-accion="deshacer"]').disabled = indice <= 0; ui.querySelector('[data-accion="rehacer"]').disabled = indice >= historial.length - 1; }
+  var claveBorrador = 'landing-borrador-' + window.location.pathname;
+  function guardarBorrador(){ try { window.localStorage.setItem(claveBorrador, JSON.stringify({fecha: new Date().toISOString(), estado: estado()})); } catch (e) {} }
+  var temporizadorPaso;
+  document.addEventListener('input', function(e){
+    if (e.target.closest('.ed-ui')) return;
+    clearTimeout(temporizadorPaso); temporizadorPaso = setTimeout(guardarPaso, 400);
+  });
+
+  /* ---------- 16.4 Ajustes: leer el estado de la página y escribirlo ---------- */
+  var campana = document.querySelectorAll('[data-campana]');
+  var cotizadores = document.querySelectorAll('a[data-cotizador],form[data-destino],iframe[data-cotizador-src]');
+  var telefonos = document.querySelectorAll('[data-telefono]');
+  var whatsapps = document.querySelectorAll('[data-whatsapp]');
+  function marcarOpcion(grupo, valor){ grupo.querySelectorAll('.ed-opcion').forEach(function(b){ b.classList.toggle('activa', b.getAttribute('data-valor') === valor); }); }
+  function leerEstadoEnPanel(){
+    campo('ed-campana').checked = campana.length ? !campana[0].hidden : false;
+    if (huincha) {
+      campo('ed-huincha').checked = !huincha.hidden;
+      marcarOpcion(campo('ed-huincha-color'), huincha.classList.contains('huincha--azul') ? 'azul' : 'amarilla');
+      campo('ed-huincha-cerrar').checked = !!huincha.querySelector('.huincha__cerrar') && !huincha.querySelector('.huincha__cerrar').hidden;
+    }
+    if (popup) {
+      campo('ed-popup').checked = popup.getAttribute('data-encendido') === 'si';
+      marcarOpcion(campo('ed-popup-tamano'), popup.getAttribute('data-tamano') || 'mediano');
+      campo('ed-popup-retardo').value = popup.getAttribute('data-retardo') || '0';
+      campo('ed-popup-unavez').checked = popup.getAttribute('data-una-vez') === 'si';
+      var botonPopup = popup.querySelector('.popup__acciones a'); campo('ed-popup-enlace').value = botonPopup ? botonPopup.getAttribute('href') : '';
+      var imagenPopup = popup.querySelector('.popup__visual img'); campo('ed-popup-imagen').value = imagenPopup ? imagenPopup.getAttribute('src') : '';
+      popup.hidden = !campo('ed-popup').checked; /* en edición se ve si está encendido */
+    }
+    var primerCotizador = cotizadores[0];
+    campo('ed-cotizador').value = primerCotizador ? (primerCotizador.getAttribute('href') || primerCotizador.getAttribute('data-destino') || primerCotizador.getAttribute('data-cotizador-src')) : '';
+    campo('ed-telefono').value = telefonos.length ? telefonos[0].getAttribute('data-telefono') : '';
+    campo('ed-whatsapp').value = whatsapps.length ? whatsapps[0].getAttribute('href') : '';
+  }
+  function escribirCampana(){ var on = campo('ed-campana').checked; campana.forEach(function(el){ el.hidden = !on; }); }
+  function escribirHuincha(){
+    if (!huincha) return;
+    huincha.hidden = !campo('ed-huincha').checked;
+    var color = campo('ed-huincha-color').querySelector('.activa'); color = color ? color.getAttribute('data-valor') : 'amarilla';
+    huincha.classList.toggle('huincha--azul', color === 'azul'); huincha.classList.toggle('huincha--amarilla', color !== 'azul');
+    var cerrar = huincha.querySelector('.huincha__cerrar'); if (cerrar) cerrar.hidden = !campo('ed-huincha-cerrar').checked;
+  }
+  function escribirPopup(){
+    if (!popup) return;
+    popup.setAttribute('data-encendido', campo('ed-popup').checked ? 'si' : 'no');
+    popup.hidden = !campo('ed-popup').checked;
+    var tamano = campo('ed-popup-tamano').querySelector('.activa'); popup.setAttribute('data-tamano', tamano ? tamano.getAttribute('data-valor') : 'mediano');
+    popup.setAttribute('data-retardo', String(Math.max(0, parseInt(campo('ed-popup-retardo').value || '0', 10))));
+    popup.setAttribute('data-una-vez', campo('ed-popup-unavez').checked ? 'si' : 'no');
+    var botonPopup = popup.querySelector('.popup__acciones a'); if (botonPopup && campo('ed-popup-enlace').value.trim()) botonPopup.setAttribute('href', campo('ed-popup-enlace').value.trim());
+    var imagenPopup = popup.querySelector('.popup__visual img');
+    if (imagenPopup) { var src = campo('ed-popup-imagen').value.trim(); if (src) imagenPopup.setAttribute('src', src); else imagenPopup.removeAttribute('src'); }
+  }
+  function escribirEnlaces(){
+    var url = campo('ed-cotizador').value.trim();
+    if (url) cotizadores.forEach(function(el){
+      if (el.tagName === 'A') el.setAttribute('href', url);
+      else if (el.tagName === 'FORM') el.setAttribute('data-destino', url);
+      else { el.setAttribute('data-cotizador-src', url); el.setAttribute('src', url); }
+    });
+    var tel = campo('ed-telefono').value.trim();
+    if (tel) telefonos.forEach(function(el){ el.setAttribute('data-telefono', tel); el.setAttribute('href', 'tel:' + tel.replace(/\D/g, '')); var txt = el.querySelector('[data-telefono-texto]'); if (txt) txt.textContent = tel; });
+    var wa = campo('ed-whatsapp').value.trim(); if (wa) whatsapps.forEach(function(el){ el.setAttribute('href', wa); });
+  }
+  panel.addEventListener('change', function(e){ if (e.target.closest('.ed-ui')) { escribirCampana(); escribirHuincha(); escribirPopup(); escribirEnlaces(); guardarPaso(); } });
+  panel.addEventListener('click', function(e){
+    var opcion = e.target.closest('.ed-opcion'); if (!opcion) return;
+    marcarOpcion(opcion.parentNode, opcion.getAttribute('data-valor')); escribirHuincha(); escribirPopup(); guardarPaso();
+  });
+
+  /* ---------- 16.5 Configuración de GitHub guardada en el navegador ---------- */
+  var claveGithub = 'landing-github-config';
+  function leerConfigGithub(){ try { return JSON.parse(window.localStorage.getItem(claveGithub) || '{}'); } catch (e) { return {}; } }
+  function cargarConfigGithub(){
+    var c = leerConfigGithub();
+    campo('ed-repo').value = c.repo || ''; campo('ed-rama').value = c.rama || 'main';
+    campo('ed-ruta').value = c.ruta || window.location.pathname.split('/').pop() || 'index.html';
+    campo('ed-token').value = c.token || '';
+  }
+  function guardarConfigGithub(){
+    var c = {repo: campo('ed-repo').value.trim(), rama: campo('ed-rama').value.trim() || 'main', ruta: campo('ed-ruta').value.trim(), token: campo('ed-token').value.trim()};
+    try { if (campo('ed-recordar').checked) window.localStorage.setItem(claveGithub, JSON.stringify(c)); else window.localStorage.removeItem(claveGithub); } catch (e) {}
+    return c;
+  }
+
+  /* ---------- 16.6 Serializar la página limpia (sin interfaz de edición) ---------- */
+  function serializar(){
+    var copia = document.documentElement.cloneNode(true);
+    copia.querySelectorAll('.ed-ui').forEach(function(el){ el.remove(); });
+    copia.querySelectorAll('[contenteditable]').forEach(function(el){ el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck'); });
+    copia.classList.remove('ed-activo'); copia.querySelector('body').classList.remove('ed-activo');
+    if (!copia.classList.length) copia.removeAttribute('class');
+    var p = copia.querySelector('.popup'); if (p) p.hidden = true; /* el visitante lo ve por su propio temporizador */
+    return '<!DOCTYPE html>\n' + copia.outerHTML + '\n';
+  }
+  function aBase64(texto){
+    var bytes = new TextEncoder().encode(texto), bin = '';
+    for (var i = 0; i < bytes.length; i += 8192) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 8192));
+    return window.btoa(bin);
+  }
+  function descargar(){
+    var html = serializar(), nombre = (campo('ed-ruta').value.trim() || window.location.pathname.split('/').pop() || 'landing.html').split('/').pop();
+    var enlace = document.createElement('a'); enlace.href = URL.createObjectURL(new Blob([html], {type: 'text/html;charset=utf-8'})); enlace.download = nombre;
+    document.body.appendChild(enlace); enlace.click(); enlace.remove();
+    avisar('Archivo descargado: ' + nombre);
+  }
+
+  /* ---------- 16.7 Publicar en GitHub (crea o actualiza el archivo) ---------- */
+  function publicar(){
+    var c = guardarConfigGithub();
+    if (!c.repo || !c.token || !c.ruta) { panel.classList.add('abierto'); avisar('Faltan datos de GitHub: repositorio, archivo y token.'); return; }
+    var botones = ui.querySelectorAll('[data-accion="publicar"]'); botones.forEach(function(b){ b.disabled = true; b.textContent = 'Publicando…'; });
+    var url = 'https://api.github.com/repos/' + c.repo + '/contents/' + c.ruta.replace(/^\//, '');
+    var cabeceras = {'Authorization': 'Bearer ' + c.token, 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'Content-Type': 'application/json'};
+    var html = serializar(), sha = null;
+    fetch(url + '?ref=' + encodeURIComponent(c.rama), {headers: cabeceras})
+      .then(function(r){ if (r.status === 200) return r.json().then(function(j){ sha = j.sha; }); if (r.status === 404) return null; return r.json().then(function(j){ throw new Error(j.message || ('Respuesta ' + r.status)); }); })
+      .then(function(){
+        var cuerpo = {message: 'Landing Auto Digital: edición en línea ' + new Date().toLocaleString('es-CL'), content: aBase64(html), branch: c.rama};
+        if (sha) cuerpo.sha = sha;
+        return fetch(url, {method: 'PUT', headers: cabeceras, body: JSON.stringify(cuerpo)});
+      })
+      .then(function(r){ return r.json().then(function(j){ if (r.status !== 200 && r.status !== 201) throw new Error(j.message || ('Respuesta ' + r.status)); return j; }); })
+      .then(function(j){
+        var enlace = j.commit && j.commit.html_url ? ' <a href="' + j.commit.html_url + '" target="_blank" rel="noopener">Ver cambio</a>' : '';
+        avisar('Publicado en GitHub. Cloudflare Pages lo refleja en uno o dos minutos.' + enlace, 8000);
+        try { window.localStorage.removeItem(claveBorrador); } catch (e) {}
+      })
+      .catch(function(err){ avisar('No se pudo publicar: ' + err.message, 8000); })
+      .then(function(){ botones.forEach(function(b){ b.disabled = false; b.textContent = 'Guardar y publicar'; }); });
+  }
+
+  /* ---------- 16.8 Acciones de la barra y el panel ---------- */
+  ui.addEventListener('click', function(e){
+    var boton = e.target.closest('[data-accion]'); if (!boton) return;
+    var accion = boton.getAttribute('data-accion');
+    if (accion === 'ajustes') panel.classList.toggle('abierto');
+    if (accion === 'cerrar-panel') panel.classList.remove('abierto');
+    if (accion === 'deshacer' && indice > 0) { indice--; aplicar(historial[indice]); actualizarBotones(); guardarBorrador(); }
+    if (accion === 'rehacer' && indice < historial.length - 1) { indice++; aplicar(historial[indice]); actualizarBotones(); guardarBorrador(); }
+    if (accion === 'descargar') descargar();
+    if (accion === 'publicar') publicar();
+    if (accion === 'borrar-borrador') { try { window.localStorage.removeItem(claveBorrador); } catch (err) {} avisar('Borrador eliminado. Recarga la página para ver la versión publicada.'); }
+    if (accion === 'salir') { if (window.confirm('¿Salir del modo edición? Lo no publicado queda como borrador en este navegador.')) window.location.href = window.location.pathname; }
+  });
+
+  /* ---------- 16.9 Arranque: restaurar borrador y preparar la página ---------- */
+  var borrador = null; try { borrador = JSON.parse(window.localStorage.getItem(claveBorrador) || 'null'); } catch (e) {}
+  if (borrador && borrador.estado && borrador.estado.length === contenedores.length && window.confirm('Hay un borrador guardado el ' + new Date(borrador.fecha).toLocaleString('es-CL') + '. ¿Quieres continuar con él?')) {
+    contenedores.forEach(function(c, i){ c.innerHTML = borrador.estado[i]; });
+  }
+  activarEdicion(); leerEstadoEnPanel(); cargarConfigGithub(); guardarPaso();
+  avisar('Modo edición activo: toca cualquier texto para cambiarlo. Configuración abre campaña, huincha, popup y publicación.', 6000);
+})();
+</script>
+<!-- fin [16] MODO EDICIÓN -->
+</body>
+</html>
