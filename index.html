@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seguro de Asistencia en Viajes: cotiza y contrata online | Zurich Chile</title>
-<meta name="description" content="Cotiza tu asistencia en viajes online en un minuto. Tres planes con asistencia médica desde USD 40.000, cobertura Covid-19, equipaje y seguro de accidentes personales. Paga en hasta 12 cuotas sin interés.">
+<meta name="description" content="Cotiza tu asistencia en viajes online en un minuto. Tres planes con asistencia médica desde USD 40.000, cobertura Covid-19, equipaje y seguro de accidentes personales de Zurich.">
 <!-- ¡OJO! Mientras esto sea un borrador en una dirección de pruebas va en "noindex":
      si Google indexa una página con la marca Zurich y una campaña de ejemplo, el
      problema es de la compañía. AL PUBLICAR EN zurich.cl, cambiar a "index,follow". -->
@@ -53,8 +53,11 @@
   ANTES DE PUBLICAR EN zurich.cl
     1. Cambiar <meta name="robots"> de "noindex,nofollow" a "index,follow".
     2. Completar los códigos POL / CAD en el bloque [10] LEGALES.
-    3. Revisar o borrar la campaña de ejemplo (etiqueta, textos y bases, marcados
-       con data-campana) y los precios referenciales de las tarjetas de plan.
+    3. Revisar los precios referenciales de las tarjetas de plan: son de una
+       cotización del 23-10-2026 y envejecen. Van marcados con data-campana, igual
+       que su nota al pie y su párrafo en los legales, para poder apagarlos juntos.
+    4. La página no afirma nada que no esté en las fichas de cobertura. Si se agrega
+       texto nuevo, mantener ese criterio: sin promesas de pago ni plazos.
 
   PUNTOS DE INTEGRACIÓN PARA IT
     A. Contenedor de Google Tag Manager: pegar en el bloque marcado [GTM] dentro de <head>.
@@ -202,6 +205,10 @@ h1,h2,h3{line-height:var(--interlineado-titulo);font-weight:700}
 .hero__titulo .destacado{color:var(--azul-zurich)}
 .hero__texto{font-size:var(--letra-destacada);margin-bottom:12px;max-width:560px}
 .hero__nota{font-size:var(--letra-chica);color:var(--gris-legal);margin-bottom:24px}
+/* Tres puntos de cobertura bajo el texto del hero */
+.hero__puntos{list-style:none;margin:0 0 24px;padding:0;max-width:520px}
+.hero__puntos li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:var(--letra-cuerpo)}
+.hero__puntos svg{width:20px;height:20px;flex:none;color:var(--azul-zurich);margin-top:3px}
 .hero__acciones{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
 .hero__enlace{font-size:var(--letra-chica);font-weight:600}
 
@@ -523,12 +530,26 @@ body.sin-scroll{overflow:hidden}
       <p class="hero__categoria">Seguros de viaje</p>
       <h1 class="hero__titulo">Seguro de <span class="destacado">Asistencia en Viajes</span></h1>
 
-      <!-- [02.1] CAMPAÑA · bloque de promoción. Se enciende y apaga desde Configuración en el modo edición; también se puede borrar a mano.
-           Texto de EJEMPLO: la campaña, el descuento y sus fechas son ficticios y deben reemplazarse por la vigente. -->
-      <span class="etiqueta-campana" data-campana>Campaña Verano Protegido</span>
-      <p class="hero__texto" data-campana>Contrata online y paga en <strong>hasta 12 cuotas sin interés</strong> con Webpay, más <strong>15% de descuento</strong> en el plan que elijas.*</p>
-      <p class="hero__nota" data-campana>*Válido hasta el 31 de enero de 2027 para asistencias contratadas desde esta página.</p>
-      <!-- fin [02.1] CAMPAÑA -->
+      <p class="hero__texto">Asistencia médica, traslados y repatriación durante todo tu viaje, con el respaldo de Zurich. Cotizas, comparas los tres planes y contratas online.</p>
+
+      <!-- Los tres puntos salen de las fichas de cobertura y valen para los tres planes.
+           Si cambian los montos, cambian aquí y en las tarjetas de [04]. -->
+      <ul class="hero__puntos">
+        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por enfermedad o accidente desde USD 40.000</span></li>
+        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Traslados y repatriación sanitaria en los tres planes</span></li>
+        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Seguro de accidentes personales de Zurich por UF 1.000</span></li>
+      </ul>
+
+      <!-- [02.1] CAMPAÑA · va vacío a propósito: hoy no hay promoción vigente, y un
+           descuento inventado en una página con la marca Zurich no es un detalle menor.
+           Cuando Marketing tenga una campaña real, se reponen estas tres líneas con su
+           texto y se agrega el párrafo de bases en [10] LEGALES. Los atributos
+           data-campana permiten encenderla y apagarla desde Configuración en ?editar.
+
+           <span class="etiqueta-campana" data-campana>Nombre de la campaña</span>
+           <p class="hero__texto" data-campana>Texto de la promoción.*</p>
+           <p class="hero__nota" data-campana>*Vigencia y condiciones.</p>
+      -->
 
       <div class="hero__acciones">
         <a class="hero__enlace" href="#planes">Ver los planes y sus coberturas</a>
@@ -688,11 +709,11 @@ body.sin-scroll{overflow:hidden}
 <section class="seccion">
   <div class="contenedor">
     <h2 class="seccion__titulo">¿Por qué viajar con asistencia?</h2>
-    <p class="seccion__bajada">Una urgencia médica fuera de Chile puede costar miles de dólares. Con tu asistencia contratada, la llamada la haces tú y la cuenta la pagamos nosotros.</p>
+    <p class="seccion__bajada">Una atención médica fuera de Chile puede costar miles de dólares. Con tu asistencia contratada llamas a la central de Universal Assistance, que coordina la atención y cubre los gastos hasta el monto del plan que elijas.</p>
     <div class="beneficios">
       <div class="beneficio"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 5 8 11v11c0 10 7 17 16 21 9-4 16-11 16-21V11L24 5Z"/><path d="M24 17v12M18 23h12"/></svg><h3>+ Tranquilidad</h3><p>Asistencia médica por enfermedad o accidente desde USD 40.000, también por Covid-19.</p></div>
-      <div class="beneficio"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="16" width="28" height="22" rx="3"/><path d="M18 16v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3"/><path d="M10 26h28"/><path d="M19 38v3M29 38v3"/></svg><h3>+ Respaldo</h3><p>Equipaje demorado o perdido, documentos extraviados y vuelos retrasados más de 6 horas.</p></div>
-      <div class="beneficio"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="5" width="20" height="38" rx="3"/><path d="M21 9h6"/><path d="M18 24l4 4 8-8"/><circle cx="24" cy="38" r="1.2" fill="currentColor"/></svg><h3>+ Comodidad</h3><p>Cotizas, pagas y recibes tu certificado online. Teleasistencia médica desde la app, 24/7.</p></div>
+      <div class="beneficio"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="16" width="28" height="22" rx="3"/><path d="M18 16v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3"/><path d="M10 26h28"/><path d="M19 38v3M29 38v3"/></svg><h3>+ Respaldo</h3><p>Compensación por pérdida de equipaje, gastos por demora de equipaje y por vuelos retrasados más de 6 horas. Los montos cambian según el plan.</p></div>
+      <div class="beneficio"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="5" width="20" height="38" rx="3"/><path d="M21 9h6"/><path d="M18 24l4 4 8-8"/><circle cx="24" cy="38" r="1.2" fill="currentColor"/></svg><h3>+ Comodidad</h3><p>Cotizas, pagas y recibes tu certificado online. Los tres planes incluyen teleasistencia médica.</p></div>
     </div>
   </div>
 </section>
@@ -707,7 +728,7 @@ body.sin-scroll{overflow:hidden}
     <div class="pasos">
       <div class="paso"><div class="paso__numero">1</div><h3>Cotiza en un minuto</h3><p>Ingresas el destino, las fechas del viaje y la edad de quienes viajan.</p></div>
       <div class="paso"><div class="paso__numero">2</div><h3>Compara los tres planes</h3><p>Ves el precio total de Básico, Estándar y Premium, y el detalle de cada cobertura.</p></div>
-      <div class="paso"><div class="paso__numero">3</div><h3>Paga y recibe tu certificado</h3><p>Pagas con Webpay en hasta 12 cuotas sin interés y te llega por correo al instante.</p></div>
+      <div class="paso"><div class="paso__numero">3</div><h3>Paga y recibe tu certificado</h3><p>Pagas con Webpay, en una cuota o en cuotas sin interés, y recibes tu certificado por correo.</p></div>
     </div>
   </div>
 </section>
@@ -720,12 +741,12 @@ body.sin-scroll{overflow:hidden}
   <div class="contenedor">
     <h2 class="seccion__titulo">Lo que preguntan antes de contratar</h2>
     <div class="dudas">
-      <div class="duda"><h3>¿Hasta qué edad puedo contratar?</h3><p>Hasta los 70 años en los tres planes. Sobre esa edad, llámanos y revisamos alternativas.</p></div>
+      <div class="duda"><h3>¿Hasta qué edad puedo contratar?</h3><p>Hasta los 70 años en los tres planes: es el límite de edad de la cobertura.</p></div>
       <div class="duda"><h3>¿Cubre enfermedades preexistentes?</h3><p>Sí, con tope: USD 400 en el Básico, USD 2.000 en el Estándar y USD 3.000 en el Premium.</p></div>
-      <div class="duda"><h3>¿Me sirve para la visa Schengen?</h3><p>Europa exige una cobertura médica mínima de 30.000 euros. Los planes Estándar y Premium la superan.</p></div>
+      <div class="duda"><h3>¿Me sirve para pedir la visa Schengen?</h3><p>El espacio Schengen exige acreditar una cobertura médica mínima de 30.000 euros. Los montos de los planes Estándar y Premium están por sobre esa cifra, pero cada consulado decide si acepta el certificado: confírmalo antes de viajar.</p></div>
       <div class="duda"><h3>¿Y si viajo dentro de Chile?</h3><p>Los planes tienen ámbito nacional a más de 100 km de tu lugar de residencia, desde USD 10.000.</p></div>
-      <div class="duda"><h3>¿Sirve en un crucero?</h3><p>Sí. Los tres planes son válidos en cruceros, sin recargo.</p></div>
-      <div class="duda"><h3>¿Puedo viajar embarazada?</h3><p>Sí, con asistencia hasta la semana 25 en el Básico y hasta la semana 26 en Estándar y Premium.</p></div>
+      <div class="duda"><h3>¿Sirve en un crucero?</h3><p>Sí. Las tres fichas indican cobertura válida en cruceros.</p></div>
+      <div class="duda"><h3>¿Qué pasa si viajo embarazada?</h3><p>La asistencia para embarazadas llega hasta la semana 25 en el Básico y hasta la semana 26 en Estándar y Premium.</p></div>
     </div>
   </div>
 </section>
@@ -753,7 +774,7 @@ body.sin-scroll{overflow:hidden}
      ============================================================ -->
 <section class="cierre">
   <div class="contenedor cierre__interior">
-    <h2>Viaja tranquilo, desde $27.630 por persona</h2>
+    <h2>Viaja protegido, desde que sales hasta que vuelves</h2>
     <p>Cotiza en un minuto, compara los tres planes y contrata con el respaldo de Zurich. Si prefieres, llámanos al <a href="tel:+56225814449" data-telefono="(2) 2581 4449"><strong data-telefono-texto>(2) 2581 4449</strong></a>.</p>
     <div class="cierre__acciones">
       <a class="boton boton--blanco" href="#cotizar" data-ubicacion="cierre">Cotiza tu viaje<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12"/><path d="m11 5 5 5-5 5"/></svg></a>
@@ -772,7 +793,6 @@ body.sin-scroll{overflow:hidden}
 <section class="legales">
   <div class="contenedor">
     <p>Este informativo contiene un resumen de las coberturas, condiciones y limitaciones del Seguro de Asistencia en Viajes. Las prestaciones de asistencia son otorgadas por Universal Assistance. El Seguro de Accidentes Personales asociado es asegurado por Zurich Chile Seguros Generales S.A. El detalle de sus características, requisitos de asegurabilidad, extensión de la cobertura, limitaciones, prima y forma de pago se encuentra en las condiciones generales y cláusulas adicionales depositadas en la Comisión para el Mercado Financiero bajo los códigos [COMPLETAR CÓDIGOS POL / CAD VIGENTES], y en sus condiciones particulares.</p>
-    <p data-campana>(*) Campaña Verano Protegido, texto de ejemplo: válida para asistencias contratadas desde esta página entre el 1 de noviembre de 2026 y el 31 de enero de 2027. El 15% de descuento se aplica sobre la prima de tarifa del plan elegido. Las 12 cuotas sin interés dependen del emisor de la tarjeta y se gestionan en Webpay. Bases y condiciones en <a href="https://www.zurich.cl/conocenos/bases" target="_blank" rel="noopener">www.zurich.cl/conocenos/bases</a>.</p>
     <p data-campana>Precios referenciales: valores obtenidos del cotizador el 23 de octubre de 2026 para 2 pasajeros de 35 y 42 años, 7 días de viaje con destino Sudamérica (total Plan Básico $55.259, Plan Estándar $66.319 y Plan Premium $98.247). El valor por persona corresponde al total dividido entre los dos pasajeros. El precio final depende del destino, las fechas, la cantidad de pasajeros y sus edades, y se confirma en el cotizador. Los montos de cobertura se expresan en dólares de los Estados Unidos de América y los de accidentes personales en Unidades de Fomento.</p>
     <p>Mundo Zurich es un programa de fidelización de las compañías del grupo Zurich para clientes con seguros vigentes; sus beneficios son temporales y pueden modificarse o eliminarse, y no forman parte de la póliza contratada. Términos y condiciones en <a href="https://www.zurich.cl/mundo-zurich" target="_blank" rel="noopener">zurich.cl/mundo-zurich</a>.</p>
   </div>
@@ -1343,7 +1363,7 @@ var COTIZADOR = {
     <div class="popup__visual"><img alt=""></div>
     <div class="popup__contenido">
       <span class="popup__etiqueta">Solo por hoy</span>
-      <h2 class="popup__titulo" id="popup-titulo">Viaja tranquilo desde $27.630 por persona</h2>
+      <h2 class="popup__titulo" id="popup-titulo">Cotiza tu asistencia en viajes</h2>
       <p class="popup__texto">Cotiza en un minuto tu asistencia en viajes y contrata online, con el respaldo de Zurich.</p>
       <div class="popup__acciones"><a class="boton" data-cotizador href="https://www.universal-assistance.com/cl/zurich?utm_source=zurich_cl&amp;utm_medium=referral&amp;utm_campaign=zurich_cl_prod_digitales" data-ubicacion="popup">Cotizar ahora</a><a class="boton boton--linea" href="#" data-popup-cerrar>Ahora no</a></div>
       <p class="popup__nota">Texto de ejemplo: cámbialo desde el modo edición.</p>
