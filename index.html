@@ -97,16 +97,17 @@
   --gris-linea:#D9DEE3;       /* filetes y bordes de campos */
 
   /* Escala de tamaños de letra. Todos los textos toman uno de estos valores.
-     Medida contra zurich.cl el 26-10-2026: el portal usa 18 px de cuerpo en móvil,
-     20 px en escritorio y 44 px en el titular. Esta escala sigue esos tamaños. */
-  --letra-nota:14px;            /* legales y notas */
-  --letra-chica:16px;           /* etiquetas, enlaces secundarios */
-  --letra-cuerpo:18px;          /* texto corriente · igual que el portal en móvil */
-  --letra-destacada:20px;       /* texto destacado, bajadas de sección */
-  --letra-tarjeta:22px;         /* títulos de tarjeta */
-  --letra-seccion-movil:28px;   /* títulos de sección en móvil */
-  --letra-seccion:36px;         /* títulos de sección en escritorio */
-  --letra-hero:44px;            /* titular del hero en escritorio */
+     Llegamos acá por corrección: primero copiamos los tamaños de zurich.cl (20 px de
+     cuerpo, 44 px de titular) y la página se veía inflada. El portal tiene columnas
+     más anchas y menos densidad; esta landing pide una escala más contenida. */
+  --letra-nota:13px;            /* legales y notas */
+  --letra-chica:14px;           /* etiquetas, enlaces secundarios */
+  --letra-cuerpo:16px;          /* texto corriente */
+  --letra-destacada:18px;       /* texto destacado, bajadas de sección */
+  --letra-tarjeta:20px;         /* títulos de tarjeta */
+  --letra-seccion-movil:24px;   /* títulos de sección en móvil */
+  --letra-seccion:30px;         /* títulos de sección en escritorio */
+  --letra-hero:40px;            /* titular del hero en escritorio */
 
   /* Interlineados (número sin unidad = múltiplo del tamaño de letra) */
   --interlineado-texto:1.5;     /* párrafos */
@@ -118,11 +119,11 @@
   --radio-boton:999px;          /* botón en forma de píldora, igual que el portal */
   --alto-cabecera:72px;
 }
-/* En escritorio el portal agranda el cuerpo del texto: de 18 a 20 px */
+/* En escritorio el cuerpo sube un punto, nada más */
 @media(min-width:900px){
   :root{
-    --letra-cuerpo:20px;
-    --letra-destacada:22px;
+    --letra-cuerpo:17px;
+    --letra-destacada:19px;
   }
 }
 
@@ -205,6 +206,21 @@ h1,h2,h3{line-height:var(--interlineado-titulo);font-weight:700}
 .hero__titulo .destacado{color:var(--azul-zurich)}
 .hero__texto{font-size:var(--letra-destacada);margin-bottom:12px;max-width:560px}
 .hero__nota{font-size:var(--letra-chica);color:var(--gris-legal);margin-bottom:24px}
+/* Tira de precios del hero: el gancho comercial, por duración de viaje */
+.hero__precios{margin:0 0 24px;max-width:520px}
+.hero__precios__titulo{font-size:var(--letra-chica);font-weight:700;margin:0 0 8px}
+.hero__precios ul{
+  list-style:none;margin:0;padding:0;display:grid;gap:8px;
+  grid-template-columns:repeat(auto-fit,minmax(104px,1fr));
+}
+.hero__precios li{
+  background:var(--blanco-zurich);border-radius:12px;padding:10px 12px;
+  display:flex;flex-direction:column;gap:2px;min-width:0;
+}
+.hero__precios li span{font-size:var(--letra-nota);font-weight:600;color:var(--gris-legal)}
+.hero__precios li strong{font-size:var(--letra-tarjeta);color:var(--azul-zurich);line-height:1.1}
+.hero__precios__nota{font-size:var(--letra-nota);color:var(--gris-legal);margin:8px 0 0}
+
 /* Tres puntos de cobertura bajo el texto del hero */
 .hero__puntos{list-style:none;margin:0 0 24px;padding:0;max-width:520px}
 .hero__puntos li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:var(--letra-cuerpo)}
@@ -530,10 +546,27 @@ body.sin-scroll{overflow:hidden}
       <p class="hero__categoria">Seguros de viaje</p>
       <h1 class="hero__titulo">Seguro de <span class="destacado">Asistencia en Viajes</span></h1>
 
+      <span class="etiqueta-campana" data-campana>Asistencia desde $21.912 por persona</span>
       <p class="hero__texto">Asistencia médica, traslados y repatriación durante todo tu viaje, con el respaldo de Zurich. Cotizas, comparas los tres planes y contratas online.</p>
 
       <!-- Los tres puntos salen de las fichas de cobertura y valen para los tres planes.
            Si cambian los montos, cambian aquí y en las tarjetas de [04]. -->
+      <!-- [02.2] PRECIOS · el gancho de esta landing es el precio, no un descuento.
+           Son cotizaciones reales del 27-10-2026: 1 pasajero de 35 años, destino
+           Sudamérica, Plan Básico. El precio NO cambia por destino (lo comprobamos
+           cotizando los siete); cambia por duración y por edad. Por eso la tira va
+           por días. Envejecen: van marcados con data-campana para apagarlos juntos. -->
+      <div class="hero__precios" data-campana>
+        <p class="hero__precios__titulo">Plan Básico, por persona, desde:</p>
+        <ul>
+          <li><span>3 días</span><strong>$21.912</strong></li>
+          <li><span>7 días</span><strong>$28.167</strong></li>
+          <li><span>15 días</span><strong>$61.035</strong></li>
+          <li><span>30 días</span><strong>$103.285</strong></li>
+        </ul>
+        <p class="hero__precios__nota">Referenciales para 1 pasajero de 35 años. Tu precio depende de las fechas y las edades.</p>
+      </div>
+
       <ul class="hero__puntos">
         <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por enfermedad o accidente desde USD 40.000</span></li>
         <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Traslados y repatriación sanitaria en los tres planes</span></li>
@@ -648,7 +681,7 @@ body.sin-scroll{overflow:hidden}
       <article class="plan">
         <p class="plan__nombre">Plan</p>
         <h3 class="plan__titulo">Básico</h3>
-        <p class="plan__promo" data-campana>7 días por Sudamérica<strong>desde $27.630</strong><span>por persona · 2 pasajeros</span></p>
+        <p class="plan__promo" data-campana>7 días de viaje<strong>desde $28.167</strong><span>por persona</span></p>
         <p class="plan__rc">Asistencia médica <strong>USD 40.000</strong></p>
         <ul class="plan__lista">
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por Covid-19 USD 40.000</span></li>
@@ -665,7 +698,7 @@ body.sin-scroll{overflow:hidden}
       <article class="plan">
         <p class="plan__nombre">Plan</p>
         <h3 class="plan__titulo">Estándar</h3>
-        <p class="plan__promo" data-campana>7 días por Sudamérica<strong>desde $33.160</strong><span>por persona · 2 pasajeros</span></p>
+        <p class="plan__promo" data-campana>7 días de viaje<strong>desde $33.804</strong><span>por persona</span></p>
         <p class="plan__rc">Asistencia médica <strong>USD 80.000</strong></p>
         <ul class="plan__lista">
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por Covid-19 USD 80.000</span></li>
@@ -683,7 +716,7 @@ body.sin-scroll{overflow:hidden}
         <span class="plan__etiqueta">Cobertura completa</span>
         <p class="plan__nombre">Plan</p>
         <h3 class="plan__titulo">Premium</h3>
-        <p class="plan__promo" data-campana>7 días por Sudamérica<strong>desde $49.124</strong><span>por persona · 2 pasajeros</span></p>
+        <p class="plan__promo" data-campana>7 días de viaje<strong>desde $50.079</strong><span>por persona</span></p>
         <p class="plan__rc">Asistencia médica <strong>USD 250.000</strong></p>
         <ul class="plan__lista">
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por Covid-19 USD 250.000</span></li>
@@ -698,7 +731,7 @@ body.sin-scroll{overflow:hidden}
       </article>
 
     </div>
-    <p class="planes__pie" data-campana>Precios referenciales por persona para 2 pasajeros de 35 y 42 años, 7 días con destino Sudamérica. Tu precio depende del destino, las fechas y las edades: <a href="#cotizar">cotiza tu viaje</a>.</p>
+    <p class="planes__pie" data-campana>Precios referenciales para 1 pasajero de 35 años y 7 días de viaje. El precio no cambia según el destino, pero sí según las fechas y las edades: <a href="#cotizar">cotiza tu viaje</a>.</p>
   </div>
 </section>
 
@@ -793,7 +826,7 @@ body.sin-scroll{overflow:hidden}
 <section class="legales">
   <div class="contenedor">
     <p>Este informativo contiene un resumen de las coberturas, condiciones y limitaciones del Seguro de Asistencia en Viajes. Las prestaciones de asistencia son otorgadas por Universal Assistance. El Seguro de Accidentes Personales asociado es asegurado por Zurich Chile Seguros Generales S.A. El detalle de sus características, requisitos de asegurabilidad, extensión de la cobertura, limitaciones, prima y forma de pago se encuentra en las condiciones generales y cláusulas adicionales depositadas en la Comisión para el Mercado Financiero bajo los códigos [COMPLETAR CÓDIGOS POL / CAD VIGENTES], y en sus condiciones particulares.</p>
-    <p data-campana>Precios referenciales: valores obtenidos del cotizador el 23 de octubre de 2026 para 2 pasajeros de 35 y 42 años, 7 días de viaje con destino Sudamérica (total Plan Básico $55.259, Plan Estándar $66.319 y Plan Premium $98.247). El valor por persona corresponde al total dividido entre los dos pasajeros. El precio final depende del destino, las fechas, la cantidad de pasajeros y sus edades, y se confirma en el cotizador. Los montos de cobertura se expresan en dólares de los Estados Unidos de América y los de accidentes personales en Unidades de Fomento.</p>
+    <p data-campana>Precios referenciales: valores obtenidos del cotizador el 27 de octubre de 2026 para 1 pasajero de 35 años con destino Sudamérica, viajando entre el 10 y el 16 de noviembre de 2026. Para 7 días: Plan Básico $28.167, Plan Estándar $33.804 y Plan Premium $50.079. Para otras duraciones del mismo Plan Básico: 3 días $21.912, 15 días $61.035 y 30 días $103.285. En esa fecha el precio era el mismo para todos los destinos internacionales. El precio final depende de las fechas, la cantidad de pasajeros y sus edades, y se confirma en el cotizador. Los montos de cobertura se expresan en dólares de los Estados Unidos de América y los de accidentes personales en Unidades de Fomento.</p>
     <p>Mundo Zurich es un programa de fidelización de las compañías del grupo Zurich para clientes con seguros vigentes; sus beneficios son temporales y pueden modificarse o eliminarse, y no forman parte de la póliza contratada. Términos y condiciones en <a href="https://www.zurich.cl/mundo-zurich" target="_blank" rel="noopener">zurich.cl/mundo-zurich</a>.</p>
   </div>
 </section>
