@@ -209,14 +209,16 @@ h1,h2,h3{line-height:var(--interlineado-titulo);font-weight:700}
 /* Oferta del hero: un precio grande y los destinos como entrada al cotizador.
    Sin cajas grises ni recuadros: el precio pesa por tamaño y color, y los destinos
    son píldoras con el mismo radio que los botones del portal. */
-.hero__oferta{margin:0 0 28px;max-width:540px}
-.hero__oferta__precio{display:flex;flex-direction:column;margin:0 0 18px}
+.hero__oferta{margin:4px 0 28px}
+.hero__oferta__precio{display:flex;flex-direction:column;margin:0 0 24px}
 .hero__oferta__precio span{font-size:var(--letra-chica);color:var(--gris-legal)}
-.hero__oferta__precio span:first-child{font-weight:600}
+.hero__oferta__precio span:first-child{font-weight:700;color:var(--azul-oscuro);text-transform:uppercase;letter-spacing:.04em}
+/* El precio es el gancho: manda por tamaño, no por recuadros */
 .hero__oferta__precio strong{
-  font-size:40px;line-height:1.05;color:var(--azul-zurich);letter-spacing:-.01em;margin:2px 0;
+  font-size:56px;line-height:1;color:var(--azul-zurich);
+  letter-spacing:-.02em;margin:6px 0 8px;
 }
-@media(min-width:900px){.hero__oferta__precio strong{font-size:48px}}
+@media(min-width:900px){.hero__oferta__precio strong{font-size:76px}}
 .hero__oferta__titulo{font-size:var(--letra-chica);font-weight:700;margin:0 0 10px}
 .hero__destinos{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
 .hero__destinos button{
@@ -225,15 +227,15 @@ h1,h2,h3{line-height:var(--interlineado-titulo);font-weight:700}
   border:1.5px solid var(--gris-linea);border-radius:var(--radio-boton);
   padding:9px 16px;transition:border-color .15s,background .15s,color .15s;
 }
-.hero__destinos button:hover{border-color:var(--azul-zurich);background:var(--azul-zurich);color:var(--blanco)}
+.hero__destinos button:hover{border-color:var(--azul-zurich)}
 .hero__destinos button:focus-visible{outline:3px solid var(--celeste);outline-offset:2px}
-.hero__destinos button[aria-pressed="true"]{background:var(--azul-zurich);border-color:var(--azul-zurich);color:var(--blanco)}
+/* El destino elegido va en Lima, el color inclusivo del brandbook, con texto en
+   azul oscuro: es el par que el manual usa para destacar (contraste 10,28:1). */
+.hero__destinos button[aria-pressed="true"]{
+  background:var(--campana);border-color:var(--campana);color:var(--azul-oscuro);
+}
 .hero__oferta__nota{font-size:var(--letra-nota);color:var(--gris-legal);margin:12px 0 0}
 
-/* Tres puntos de cobertura bajo el texto del hero */
-.hero__puntos{list-style:none;margin:0 0 24px;padding:0;max-width:520px}
-.hero__puntos li{display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:var(--letra-cuerpo)}
-.hero__puntos svg{width:20px;height:20px;flex:none;color:var(--azul-zurich);margin-top:3px}
 .hero__acciones{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
 .hero__enlace{font-size:var(--letra-chica);font-weight:600}
 
@@ -557,8 +559,6 @@ body.sin-scroll{overflow:hidden}
 
       <p class="hero__texto">Asistencia médica, traslados y repatriación durante todo tu viaje, con el respaldo de Zurich. Cotizas, comparas los tres planes y contratas online.</p>
 
-      <!-- Los tres puntos salen de las fichas de cobertura y valen para los tres planes.
-           Si cambian los montos, cambian aquí y en las tarjetas de [04]. -->
       <!-- [02.2] PRECIO Y DESTINOS · el gancho comercial.
            El precio es uno solo porque es uno solo: cotizamos los siete destinos el
            27-10-2026 y todos dieron lo mismo. Lo que cambia el precio es la duración
@@ -582,12 +582,6 @@ body.sin-scroll{overflow:hidden}
         </ul>
         <p class="hero__oferta__nota">Referencial para 1 pasajero de 35 años. El precio no cambia según el destino; sí según los días de viaje y las edades.</p>
       </div>
-
-      <ul class="hero__puntos">
-        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por enfermedad o accidente desde USD 40.000</span></li>
-        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Traslados y repatriación sanitaria en los tres planes</span></li>
-        <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Seguro de accidentes personales de Zurich por UF 1.000</span></li>
-      </ul>
 
       <!-- [02.1] CAMPAÑA · va vacío a propósito: hoy no hay promoción vigente, y un
            descuento inventado en una página con la marca Zurich no es un detalle menor.
