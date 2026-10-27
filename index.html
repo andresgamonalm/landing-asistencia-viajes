@@ -206,20 +206,29 @@ h1,h2,h3{line-height:var(--interlineado-titulo);font-weight:700}
 .hero__titulo .destacado{color:var(--azul-zurich)}
 .hero__texto{font-size:var(--letra-destacada);margin-bottom:12px;max-width:560px}
 .hero__nota{font-size:var(--letra-chica);color:var(--gris-legal);margin-bottom:24px}
-/* Tira de precios del hero: el gancho comercial, por duración de viaje */
-.hero__precios{margin:0 0 24px;max-width:520px}
-.hero__precios__titulo{font-size:var(--letra-chica);font-weight:700;margin:0 0 8px}
-.hero__precios ul{
-  list-style:none;margin:0;padding:0;display:grid;gap:8px;
-  grid-template-columns:repeat(auto-fit,minmax(104px,1fr));
+/* Oferta del hero: un precio grande y los destinos como entrada al cotizador.
+   Sin cajas grises ni recuadros: el precio pesa por tamaño y color, y los destinos
+   son píldoras con el mismo radio que los botones del portal. */
+.hero__oferta{margin:0 0 28px;max-width:540px}
+.hero__oferta__precio{display:flex;flex-direction:column;margin:0 0 18px}
+.hero__oferta__precio span{font-size:var(--letra-chica);color:var(--gris-legal)}
+.hero__oferta__precio span:first-child{font-weight:600}
+.hero__oferta__precio strong{
+  font-size:40px;line-height:1.05;color:var(--azul-zurich);letter-spacing:-.01em;margin:2px 0;
 }
-.hero__precios li{
-  background:var(--blanco-zurich);border-radius:12px;padding:10px 12px;
-  display:flex;flex-direction:column;gap:2px;min-width:0;
+@media(min-width:900px){.hero__oferta__precio strong{font-size:48px}}
+.hero__oferta__titulo{font-size:var(--letra-chica);font-weight:700;margin:0 0 10px}
+.hero__destinos{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
+.hero__destinos button{
+  font:inherit;font-size:var(--letra-chica);font-weight:600;cursor:pointer;
+  background:var(--blanco);color:var(--azul-zurich);
+  border:1.5px solid var(--gris-linea);border-radius:var(--radio-boton);
+  padding:9px 16px;transition:border-color .15s,background .15s,color .15s;
 }
-.hero__precios li span{font-size:var(--letra-nota);font-weight:600;color:var(--gris-legal)}
-.hero__precios li strong{font-size:var(--letra-tarjeta);color:var(--azul-zurich);line-height:1.1}
-.hero__precios__nota{font-size:var(--letra-nota);color:var(--gris-legal);margin:8px 0 0}
+.hero__destinos button:hover{border-color:var(--azul-zurich);background:var(--azul-zurich);color:var(--blanco)}
+.hero__destinos button:focus-visible{outline:3px solid var(--celeste);outline-offset:2px}
+.hero__destinos button[aria-pressed="true"]{background:var(--azul-zurich);border-color:var(--azul-zurich);color:var(--blanco)}
+.hero__oferta__nota{font-size:var(--letra-nota);color:var(--gris-legal);margin:12px 0 0}
 
 /* Tres puntos de cobertura bajo el texto del hero */
 .hero__puntos{list-style:none;margin:0 0 24px;padding:0;max-width:520px}
@@ -546,25 +555,32 @@ body.sin-scroll{overflow:hidden}
       <p class="hero__categoria">Seguros de viaje</p>
       <h1 class="hero__titulo">Seguro de <span class="destacado">Asistencia en Viajes</span></h1>
 
-      <span class="etiqueta-campana" data-campana>Asistencia desde $21.912 por persona</span>
       <p class="hero__texto">Asistencia médica, traslados y repatriación durante todo tu viaje, con el respaldo de Zurich. Cotizas, comparas los tres planes y contratas online.</p>
 
       <!-- Los tres puntos salen de las fichas de cobertura y valen para los tres planes.
            Si cambian los montos, cambian aquí y en las tarjetas de [04]. -->
-      <!-- [02.2] PRECIOS · el gancho de esta landing es el precio, no un descuento.
-           Son cotizaciones reales del 27-10-2026: 1 pasajero de 35 años, destino
-           Sudamérica, Plan Básico. El precio NO cambia por destino (lo comprobamos
-           cotizando los siete); cambia por duración y por edad. Por eso la tira va
-           por días. Envejecen: van marcados con data-campana para apagarlos juntos. -->
-      <div class="hero__precios" data-campana>
-        <p class="hero__precios__titulo">Plan Básico, por persona, desde:</p>
-        <ul>
-          <li><span>3 días</span><strong>$21.912</strong></li>
-          <li><span>7 días</span><strong>$28.167</strong></li>
-          <li><span>15 días</span><strong>$61.035</strong></li>
-          <li><span>30 días</span><strong>$103.285</strong></li>
+      <!-- [02.2] PRECIO Y DESTINOS · el gancho comercial.
+           El precio es uno solo porque es uno solo: cotizamos los siete destinos el
+           27-10-2026 y todos dieron lo mismo. Lo que cambia el precio es la duración
+           del viaje y la edad. Por eso los destinos van como entrada al cotizador
+           —tocar uno lo deja elegido— y el precio se dice una vez.
+           Los valores envejecen: van con data-campana para poder apagarlos juntos. -->
+      <div class="hero__oferta" data-campana>
+        <p class="hero__oferta__precio">
+          <span>Plan Básico, por persona, desde</span>
+          <strong>$28.167</strong>
+          <span>7 días · el mismo precio a cualquier destino</span>
+        </p>
+        <p class="hero__oferta__titulo">¿A dónde vas?</p>
+        <ul class="hero__destinos">
+          <li><button type="button" data-destino="América del Sur (salvo Vzla)">Sudamérica</button></li>
+          <li><button type="button" data-destino="America del norte">Norteamérica</button></li>
+          <li><button type="button" data-destino="Europa">Europa</button></li>
+          <li><button type="button" data-destino="Centro america/Caribe">Centroamérica y Caribe</button></li>
+          <li><button type="button" data-destino="Asia">Oceanía, Asia y África</button></li>
+          <li><button type="button" data-destino="Internacional Mundo">Múltiples destinos</button></li>
         </ul>
-        <p class="hero__precios__nota">Referenciales para 1 pasajero de 35 años. Tu precio depende de las fechas y las edades.</p>
+        <p class="hero__oferta__nota">Referencial para 1 pasajero de 35 años. El precio no cambia según el destino; sí según los días de viaje y las edades.</p>
       </div>
 
       <ul class="hero__puntos">
@@ -1227,6 +1243,32 @@ var COTIZADOR = {
   }
   pasajeros.addEventListener('change', dibujarEdades);
   dibujarEdades();
+
+  /* --- 17.2b Los destinos del hero eligen en el selector del formulario --- */
+  (function(){
+    var destino = form.querySelector('[name="Destino"]');
+    var botones = document.querySelectorAll('.hero__destinos button');
+    function marcar(){
+      botones.forEach(function(b){
+        b.setAttribute('aria-pressed', b.getAttribute('data-destino') === destino.value ? 'true' : 'false');
+      });
+    }
+    botones.forEach(function(b){
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', function(){
+        destino.value = b.getAttribute('data-destino');
+        destino.dispatchEvent(new Event('change', {bubbles:true}));
+        registrar('destino_elegido', {destino: b.textContent.trim()});
+        /* En móvil el formulario queda más abajo: lo dejamos a la vista */
+        if (!window.matchMedia('(min-width:900px)').matches) {
+          form.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+        ida.focus({preventScroll:true});   /* el siguiente paso es la fecha */
+      });
+    });
+    destino.addEventListener('change', marcar);
+    marcar();
+  })();
 
   /* --- 17.3 Campos que el motor necesita y el visitante no escribe --- */
   function ponerOculto(nombre, valor){
