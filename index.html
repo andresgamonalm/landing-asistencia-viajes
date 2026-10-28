@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Seguro de Asistencia en Viajes: cotiza y contrata online | Zurich Chile</title>
-<meta name="description" content="Cotiza tu asistencia en viajes online en un minuto. Tres planes con asistencia médica desde USD 40.000, cobertura Covid-19, equipaje y seguro de accidentes personales de Zurich.">
+<title>Seguro de Asistencia en Viajes: cotiza y contrata online</title>
+<meta name="description" content="Cotiza tu asistencia en viajes online en un minuto. Tres planes con asistencia médica desde USD 40.000, cobertura Covid-19, equipaje y seguro de accidentes personales.">
 <!-- ¡OJO! Mientras esto sea un borrador en una dirección de pruebas va en "noindex":
      si Google indexa una página con la marca Zurich y una campaña de ejemplo, el
      problema es de la compañía. AL PUBLICAR EN zurich.cl, cambiar a "index,follow". -->
 <meta name="robots" content="noindex,nofollow">
 <link rel="canonical" href="https://www.zurich.cl/bienes-y-viaje/asistencia-en-viajes">
-<meta property="og:title" content="Seguro de Asistencia en Viajes: cotiza y contrata online | Zurich Chile">
+<meta property="og:title" content="Seguro de Asistencia en Viajes: cotiza y contrata online">
 <meta property="og:description" content="Cotiza tu asistencia en viajes online en un minuto. Tres planes con asistencia médica desde USD 40.000, cobertura Covid-19, equipaje y seguro de accidentes personales.">
 <meta property="og:image" content="https://edge.sitecorecloud.io/zurichinsurf8c0-zwpshared-prod-d824/media/project/zurich-headless/chile/images/foto-blog-viaje-solo-800x450.jpg?w=900">
 <meta property="og:type" content="website">
@@ -23,7 +23,6 @@
 
   Archivo autónomo: todo el CSS y los íconos están dentro. Recursos externos:
     - Fuente Inter (Google Fonts). Si el servidor sirve Zurich Sans y Ogg, se usan primero.
-    - Logotipo: embebido en el archivo (PNG oficial).
     - Fotografía del hero: incrustada en el archivo (JPEG). Para servirla desde el CDN,
       reemplaza el src de [02.2] por la dirección que está comentada ahí mismo.
     - Cotizador: el buscador es de esta página; al enviarlo, los datos van por POST
@@ -172,18 +171,14 @@ h1,h2,h3{line-height:var(--interlineado-titulo);font-weight:700}
 .boton svg{width:18px;height:18px;flex:none}
 
 /* ==========================================================================
-   4. CABECERA — fondo blanco, logotipo azul, igual que el portal público
+   4. CABECERA — fondo blanco, sin logotipo: solo el botón, a la derecha
    ========================================================================== */
 .cabecera{
   position:sticky;top:0;z-index:20;background:var(--blanco);
   border-bottom:1px solid var(--gris-linea);
 }
-.cabecera__interior{height:var(--alto-cabecera);display:flex;align-items:center;justify-content:space-between;gap:24px}
-.cabecera__logo{height:32px;width:auto} /* ancho proporcional 4,31:1 lo calcula el navegador */
+.cabecera__interior{height:var(--alto-cabecera);display:flex;align-items:center;justify-content:flex-end;gap:24px}
 .cabecera__acciones{display:flex;align-items:center;gap:24px}
-.cabecera__telefono{display:none;color:var(--azul-oscuro);text-decoration:none;font-weight:600;font-size:var(--letra-chica);align-items:center;gap:8px}
-.cabecera__telefono svg{width:18px;height:18px}
-@media(min-width:768px){.cabecera__telefono{display:inline-flex}}
 @media(max-width:767px){.cabecera__cta{min-height:40px;padding:8px 18px;font-size:var(--letra-chica)}}
 
 /* ==========================================================================
@@ -528,18 +523,11 @@ body.sin-scroll{overflow:hidden}
 <!-- [GTM] Pegar aquí el fragmento <noscript> de Google Tag Manager -->
 
 <!-- ============================================================
-     [01] CABECERA · fondo blanco y logotipo azul, como zurich.cl
-     Para cambiar el logotipo: reemplaza el src por tu archivo (por ejemplo img/zurich_logo_horizontal.png)
+     [01] CABECERA · fondo blanco, sin logotipo
      ============================================================ -->
 <header class="cabecera">
   <div class="contenedor cabecera__interior">
-    <a href="https://www.zurich.cl/" aria-label="Ir a zurich.cl">
-      <!-- Logotipo oficial embebido (PNG). Alternativa: el SVG del portal
-           https://edge.sitecorecloud.io/zurichinsurf8c0-zwpshared-prod-d824/media/project/zurich-headless/shared/zurich-logo-blue.svg -->
-      <img class="cabecera__logo" src="data:image/png;base64,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" alt="Zurich" width="140" height="32">
-    </a>
     <div class="cabecera__acciones">
-      <a class="cabecera__telefono" href="tel:+56225814449" data-telefono="(2) 2581 4449"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 3h3l1.5 4-2 1.3a10 10 0 0 0 4.7 4.7L13 11l4 1.5v3a1.5 1.5 0 0 1-1.6 1.5C8.6 16.6 3.4 11.4 3 4.6A1.5 1.5 0 0 1 4.5 3Z"/></svg><span data-telefono-texto>(2) 2581 4449</span></a>
       <a class="boton cabecera__cta" href="#cotizar" data-ubicacion="cabecera">Cotiza tu viaje</a>
     </div>
   </div>
@@ -557,7 +545,7 @@ body.sin-scroll{overflow:hidden}
       <p class="hero__categoria">Seguros de viaje</p>
       <h1 class="hero__titulo">Seguro de <span class="destacado">Asistencia en Viajes</span></h1>
 
-      <p class="hero__texto">Asistencia médica, traslados y repatriación durante todo tu viaje, con el respaldo de Zurich. Cotizas, comparas los tres planes y contratas online.</p>
+      <p class="hero__texto">Asistencia médica, traslados y repatriación durante todo tu viaje. Cotizas, comparas los tres planes y contratas online.</p>
 
       <!-- [02.2] PRECIO Y DESTINOS · el gancho comercial.
            El precio es uno solo porque es uno solo: cotizamos los siete destinos el
@@ -669,7 +657,7 @@ body.sin-scroll{overflow:hidden}
       </form>
 
       <div class="cotizador__pie">
-        <span class="cotizador__sello"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8.5" width="13" height="8" rx="2"/><path d="M7 8.5V6a3 3 0 0 1 6 0v2.5"/></svg>Asistencias operadas por Universal Assistance, partner de Zurich.</span>
+        <span class="cotizador__sello"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8.5" width="13" height="8" rx="2"/><path d="M7 8.5V6a3 3 0 0 1 6 0v2.5"/></svg>Asistencias operadas por Universal Assistance.</span>
         <a data-cotizador href="https://www.universal-assistance.com/cl/zurich?utm_source=zurich_cl&amp;utm_medium=referral&amp;utm_campaign=zurich_cl_prod_digitales" target="_blank" rel="noopener" data-ubicacion="cotizador-sitio-ua">Ver el cotizador completo</a>
       </div>
     </div>
@@ -685,7 +673,7 @@ body.sin-scroll{overflow:hidden}
 <section class="seccion seccion--gris" id="planes">
   <div class="contenedor">
     <h2 class="seccion__titulo">Elige el plan para tu viaje</h2>
-    <p class="seccion__bajada">Los tres planes incluyen asistencia médica, traslados, repatriación y seguro de accidentes personales de Zurich. Cambian los montos y los beneficios de equipaje.</p>
+    <p class="seccion__bajada">Los tres planes incluyen asistencia médica, traslados, repatriación y seguro de accidentes personales. Cambian los montos y los beneficios de equipaje.</p>
     <div class="planes">
 
       <article class="plan">
@@ -696,7 +684,7 @@ body.sin-scroll{overflow:hidden}
         <ul class="plan__lista">
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por Covid-19 USD 40.000</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Preexistencias hasta USD 400</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Accidentes personales UF 1.000 (póliza Zurich)</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Accidentes personales UF 1.000</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Pérdida de equipaje USD 1.000</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Traslados y repatriación incluidos</span></li>
           <li class="no"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="M6.5 10h7"/></svg><span>Cúmulo por evento con múltiples titulares</span></li>
@@ -713,7 +701,7 @@ body.sin-scroll{overflow:hidden}
         <ul class="plan__lista">
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por Covid-19 USD 80.000</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Preexistencias hasta USD 2.000</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Accidentes personales UF 1.000 (póliza Zurich)</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Accidentes personales UF 1.000</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Equipaje USD 1.000 y demora USD 300</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Medicamentos ambulatorios USD 2.500</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Cúmulo por evento USD 400.000</span></li>
@@ -731,7 +719,7 @@ body.sin-scroll{overflow:hidden}
         <ul class="plan__lista">
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia médica por Covid-19 USD 250.000</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Preexistencias hasta USD 3.000</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Accidentes personales UF 1.000 (póliza Zurich)</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Accidentes personales UF 1.000</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Equipaje USD 2.000 y demora USD 400</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Asistencia nacional USD 62.500</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10.2 2.3 2.3 4.7-4.8"/></svg><span>Cúmulo por evento USD 1.500.000</span></li>
@@ -801,7 +789,7 @@ body.sin-scroll{overflow:hidden}
 <section class="seccion seccion--gris">
   <div class="contenedor mundo">
     <div>
-      <h2>Con tu seguro, entras a <span class="destacado">Mundo Zurich</span></h2>
+      <h2>Con tu seguro, entras a un <span class="destacado">programa de beneficios</span></h2>
       <p>Beneficios y servicios sin costo para ti y tu familia por ser cliente: telemedicina, veterinario online, asistencia en viajes y más.</p>
       <p style="margin-top:16px"><a href="https://www.zurich.cl/mundo-zurich" target="_blank" rel="noopener"><strong>Conoce los 7 mundos</strong></a></p>
     </div>
@@ -818,10 +806,9 @@ body.sin-scroll{overflow:hidden}
 <section class="cierre">
   <div class="contenedor cierre__interior">
     <h2>Viaja protegido, desde que sales hasta que vuelves</h2>
-    <p>Cotiza en un minuto, compara los tres planes y contrata con el respaldo de Zurich. Si prefieres, llámanos al <a href="tel:+56225814449" data-telefono="(2) 2581 4449"><strong data-telefono-texto>(2) 2581 4449</strong></a>.</p>
+    <p>Cotiza en un minuto, compara los tres planes y contrata online.</p>
     <div class="cierre__acciones">
       <a class="boton boton--blanco" href="#cotizar" data-ubicacion="cierre">Cotiza tu viaje<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12"/><path d="m11 5 5 5-5 5"/></svg></a>
-      <a class="boton boton--linea" style="color:#fff;border-color:#fff" data-whatsapp href="https://wa.me/56987902551?text=Hola%20Zurich" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
     </div>
   </div>
 </section>
@@ -835,9 +822,9 @@ body.sin-scroll{overflow:hidden}
      ============================================================ -->
 <section class="legales">
   <div class="contenedor">
-    <p>Este informativo contiene un resumen de las coberturas, condiciones y limitaciones del Seguro de Asistencia en Viajes. Las prestaciones de asistencia son otorgadas por Universal Assistance. El Seguro de Accidentes Personales asociado es asegurado por Zurich Chile Seguros Generales S.A. El detalle de sus características, requisitos de asegurabilidad, extensión de la cobertura, limitaciones, prima y forma de pago se encuentra en las condiciones generales y cláusulas adicionales depositadas en la Comisión para el Mercado Financiero bajo los códigos [COMPLETAR CÓDIGOS POL / CAD VIGENTES], y en sus condiciones particulares.</p>
+    <p>Este informativo contiene un resumen de las coberturas, condiciones y limitaciones del Seguro de Asistencia en Viajes. Las prestaciones de asistencia son otorgadas por Universal Assistance. El Seguro de Accidentes Personales asociado es asegurado por una compañía de seguros generales. El detalle de sus características, requisitos de asegurabilidad, extensión de la cobertura, limitaciones, prima y forma de pago se encuentra en las condiciones generales y cláusulas adicionales depositadas en la Comisión para el Mercado Financiero bajo los códigos [COMPLETAR CÓDIGOS POL / CAD VIGENTES], y en sus condiciones particulares.</p>
     <p data-campana>Precios referenciales: valores obtenidos del cotizador el 27 de octubre de 2026 para 1 pasajero de 35 años con destino Sudamérica, viajando entre el 10 y el 16 de noviembre de 2026. Para 7 días: Plan Básico $28.167, Plan Estándar $33.804 y Plan Premium $50.079. Para otras duraciones del mismo Plan Básico: 3 días $21.912, 15 días $61.035 y 30 días $103.285. En esa fecha el precio era el mismo para todos los destinos internacionales. El precio final depende de las fechas, la cantidad de pasajeros y sus edades, y se confirma en el cotizador. Los montos de cobertura se expresan en dólares de los Estados Unidos de América y los de accidentes personales en Unidades de Fomento.</p>
-    <p>Mundo Zurich es un programa de fidelización de las compañías del grupo Zurich para clientes con seguros vigentes; sus beneficios son temporales y pueden modificarse o eliminarse, y no forman parte de la póliza contratada. Términos y condiciones en <a href="https://www.zurich.cl/mundo-zurich" target="_blank" rel="noopener">zurich.cl/mundo-zurich</a>.</p>
+    <p>El programa de beneficios es de fidelización, para clientes con seguros vigentes; sus beneficios son temporales y pueden modificarse o eliminarse, y no forman parte de la póliza contratada. Consulta sus <a href="https://www.zurich.cl/mundo-zurich" target="_blank" rel="noopener">términos y condiciones</a>.</p>
   </div>
 </section>
 
@@ -846,7 +833,6 @@ body.sin-scroll{overflow:hidden}
      ============================================================ -->
 <footer class="pie">
   <div class="contenedor pie__interior">
-    <span>© Zurich Chile Seguros Generales S.A.</span>
     <ul>
       <li><a href="https://www.zurich.cl/conocenos/condiciones-de-uso" target="_blank" rel="noopener">Condiciones de uso</a></li>
       <li><a href="https://www.zurich.cl/conocenos/politicas-de-privacidad" target="_blank" rel="noopener">Políticas de privacidad</a></li>
@@ -912,7 +898,7 @@ body.sin-scroll{overflow:hidden}
       <div class="detalle__grupo">
         <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 14.5a3.5 3.5 0 0 1 0-7 4.5 4.5 0 0 1 8.7-1.3 3.2 3.2 0 0 1 .3 6.4"/><path d="M10 10v7"/><path d="m7.5 14.5 2.5 2.5 2.5-2.5"/></svg>Otros beneficios</h3>
         <div class="detalle__fila"><span>Asistencia médica por Covid-19</span><strong>USD 40.000</strong></div>
-        <div class="detalle__fila"><span>Seguro Accidentes Personales · Incapacidad Total y Parcial Permanente h/65 años (Pol. Zurich)</span><strong>UF 1.000</strong></div>
+        <div class="detalle__fila"><span>Seguro Accidentes Personales · Incapacidad Total y Parcial Permanente h/65 años</span><strong>UF 1.000</strong></div>
         <div class="detalle__fila"><span>Compensación por pérdida de equipaje</span><strong>USD 1.000</strong></div>
         <div class="detalle__fila"><span>Gastos de alojamiento por aislamiento · exclusivamente en el ámbito de la República de Costa Rica</span><strong>USD 2.500</strong></div>
         <div class="detalle__fila"><span>Gastos por demora de equipaje (8 horas)</span><strong>USD 200</strong></div>
@@ -991,7 +977,7 @@ body.sin-scroll{overflow:hidden}
       <div class="detalle__grupo">
         <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 14.5a3.5 3.5 0 0 1 0-7 4.5 4.5 0 0 1 8.7-1.3 3.2 3.2 0 0 1 .3 6.4"/><path d="M10 10v7"/><path d="m7.5 14.5 2.5 2.5 2.5-2.5"/></svg>Otros beneficios</h3>
         <div class="detalle__fila"><span>Asistencia médica por Covid-19</span><strong>USD 80.000</strong></div>
-        <div class="detalle__fila"><span>Seguro Accidentes Personales · Incapacidad Total y Parcial Permanente h/65 años (Pol. Zurich)</span><strong>UF 1.000</strong></div>
+        <div class="detalle__fila"><span>Seguro Accidentes Personales · Incapacidad Total y Parcial Permanente h/65 años</span><strong>UF 1.000</strong></div>
         <div class="detalle__fila"><span>Asesoría y compensación por pérdida de equipaje complementaria (aéreo / marítimo)</span><strong>USD 1.000</strong></div>
         <div class="detalle__fila"><span>Gastos por vuelo demorado (más de 6 hs)</span><strong>USD 150</strong></div>
         <div class="detalle__fila"><span>Transferencia de fondos</span><strong>USD 3.000</strong></div>
@@ -1069,7 +1055,7 @@ body.sin-scroll{overflow:hidden}
       <div class="detalle__grupo">
         <h3><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 14.5a3.5 3.5 0 0 1 0-7 4.5 4.5 0 0 1 8.7-1.3 3.2 3.2 0 0 1 .3 6.4"/><path d="M10 10v7"/><path d="m7.5 14.5 2.5 2.5 2.5-2.5"/></svg>Otros beneficios</h3>
         <div class="detalle__fila"><span>Asistencia médica por Covid-19</span><strong>USD 250.000</strong></div>
-        <div class="detalle__fila"><span>Seguro Accidentes Personales · Incapacidad Total y Parcial Permanente h/65 años (Pol. Zurich)</span><strong>UF 1.000</strong></div>
+        <div class="detalle__fila"><span>Seguro Accidentes Personales · Incapacidad Total y Parcial Permanente h/65 años</span><strong>UF 1.000</strong></div>
         <div class="detalle__fila"><span>Asesoría y compensación por pérdida de equipaje complementaria (aéreo / marítimo)</span><strong>USD 2.000</strong></div>
         <div class="detalle__fila"><span>Gastos por vuelo demorado (más de 6 hs)</span><strong>USD 200</strong></div>
         <div class="detalle__fila"><span>Transferencia de fondos</span><strong>USD 5.000</strong></div>
@@ -1433,7 +1419,7 @@ var COTIZADOR = {
     <div class="popup__contenido">
       <span class="popup__etiqueta">Solo por hoy</span>
       <h2 class="popup__titulo" id="popup-titulo">Cotiza tu asistencia en viajes</h2>
-      <p class="popup__texto">Cotiza en un minuto tu asistencia en viajes y contrata online, con el respaldo de Zurich.</p>
+      <p class="popup__texto">Cotiza en un minuto tu asistencia en viajes y contrata online.</p>
       <div class="popup__acciones"><a class="boton" data-cotizador href="https://www.universal-assistance.com/cl/zurich?utm_source=zurich_cl&amp;utm_medium=referral&amp;utm_campaign=zurich_cl_prod_digitales" data-ubicacion="popup">Cotizar ahora</a><a class="boton boton--linea" href="#" data-popup-cerrar>Ahora no</a></div>
       <p class="popup__nota">Texto de ejemplo: cámbialo desde el modo edición.</p>
     </div>
@@ -1557,7 +1543,7 @@ var COTIZADOR = {
   document.body.classList.add('ed-activo');
   var cabecera = document.querySelector('header'), principal = document.querySelector('main'), pie = document.querySelector('footer');
   var contenedores = [cabecera, principal, pie, huincha, popup].filter(Boolean);
-  var SELECTOR = 'h1,h2,h3,h4,p,li,label,small,a.boton,.etiqueta-campana,.cabecera__telefono,.popup__etiqueta,.huincha__texto,.pie__copyright';
+  var SELECTOR = 'h1,h2,h3,h4,p,li,label,small,a.boton,.etiqueta-campana,.popup__etiqueta,.huincha__texto,.pie__copyright';
 
   function activarEdicion(){
     var candidatos = [];
@@ -1618,9 +1604,7 @@ var COTIZADOR = {
         '<p class="ed-ayuda">Mientras editas, el popup queda visible para que lo veas; apágalo para seguir editando la página de fondo. El retardo aplica al visitante. Etiqueta, título, texto y botón se editan tocándolos.</p></div>' +
 
       '<div class="ed-grupo"><p class="ed-grupo__titulo">Enlaces</p>' +
-        '<div class="ed-campo"><label>Dirección del cotizador</label><input type="text" id="ed-cotizador"></div>' +
-        '<div class="ed-campo"><label>Teléfono (como se muestra)</label><input type="text" id="ed-telefono"></div>' +
-        '<div class="ed-campo"><label>WhatsApp (dirección wa.me)</label><input type="text" id="ed-whatsapp"></div></div>' +
+        '<div class="ed-campo"><label>Dirección del cotizador</label><input type="text" id="ed-cotizador"></div></div>' +
 
       '<div class="ed-grupo"><p class="ed-grupo__titulo">Publicación en GitHub</p>' +
         '<div class="ed-campo"><label>Repositorio (usuario/nombre)</label><input type="text" id="ed-repo" placeholder="andresgamonalm/landing-asistencia-viajes"></div>' +
@@ -1660,8 +1644,6 @@ var COTIZADOR = {
   /* ---------- 16.4 Ajustes: leer el estado de la página y escribirlo ---------- */
   var campana = document.querySelectorAll('[data-campana]');
   var cotizadores = document.querySelectorAll('a[data-cotizador],form[data-destino],iframe[data-cotizador-src]');
-  var telefonos = document.querySelectorAll('[data-telefono]');
-  var whatsapps = document.querySelectorAll('[data-whatsapp]');
   function marcarOpcion(grupo, valor){ grupo.querySelectorAll('.ed-opcion').forEach(function(b){ b.classList.toggle('activa', b.getAttribute('data-valor') === valor); }); }
   function leerEstadoEnPanel(){
     campo('ed-campana').checked = campana.length ? !campana[0].hidden : false;
@@ -1681,8 +1663,6 @@ var COTIZADOR = {
     }
     var primerCotizador = cotizadores[0];
     campo('ed-cotizador').value = primerCotizador ? (primerCotizador.getAttribute('href') || primerCotizador.getAttribute('data-destino') || primerCotizador.getAttribute('data-cotizador-src')) : '';
-    campo('ed-telefono').value = telefonos.length ? telefonos[0].getAttribute('data-telefono') : '';
-    campo('ed-whatsapp').value = whatsapps.length ? whatsapps[0].getAttribute('href') : '';
   }
   function escribirCampana(){ var on = campo('ed-campana').checked; campana.forEach(function(el){ el.hidden = !on; }); }
   function escribirHuincha(){
@@ -1710,9 +1690,6 @@ var COTIZADOR = {
       else if (el.tagName === 'FORM') el.setAttribute('data-destino', url);
       else { el.setAttribute('data-cotizador-src', url); el.setAttribute('src', url); }
     });
-    var tel = campo('ed-telefono').value.trim();
-    if (tel) telefonos.forEach(function(el){ el.setAttribute('data-telefono', tel); el.setAttribute('href', 'tel:' + tel.replace(/\D/g, '')); var txt = el.querySelector('[data-telefono-texto]'); if (txt) txt.textContent = tel; });
-    var wa = campo('ed-whatsapp').value.trim(); if (wa) whatsapps.forEach(function(el){ el.setAttribute('href', wa); });
   }
   panel.addEventListener('change', function(e){ if (e.target.closest('.ed-ui')) { escribirCampana(); escribirHuincha(); escribirPopup(); escribirEnlaces(); guardarPaso(); } });
   panel.addEventListener('click', function(e){
